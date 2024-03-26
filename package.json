@@ -9,7 +9,7 @@
     "preview": "astro build && wrangler pages dev ./dist",
     "astro": "astro",
     "deploy": "astro build && wrangler pages deploy ./dist",
-    "check": "astro check",
+    "check": "astro check && prettier -c .",
     "build-cf-types": "wrangler types"
   },
   "dependencies": {
