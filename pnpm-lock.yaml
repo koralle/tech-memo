@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@astrojs/check':
     specifier: ^0.5.10
-    version: 0.5.10(typescript@5.4.3)
+    version: 0.5.10(prettier@3.2.5)(typescript@5.4.3)
   '@astrojs/cloudflare':
     specifier: ^9.2.0
     version: 9.2.0(astro@4.5.9)
@@ -25,6 +25,9 @@ devDependencies:
   '@cloudflare/workers-types':
     specifier: ^4.20240320.1
     version: 4.20240320.1
+  prettier:
+    specifier: ^3.2.5
+    version: 3.2.5
   wrangler:
     specifier: ^3.37.0
     version: 3.37.0(@cloudflare/workers-types@4.20240320.1)
@@ -39,13 +42,13 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
     dev: false
 
-  /@astrojs/check@0.5.10(typescript@5.4.3):
+  /@astrojs/check@0.5.10(prettier@3.2.5)(typescript@5.4.3):
     resolution: {integrity: sha512-vliHXM9cu/viGeKiksUM4mXfO816ohWtawTl2ADPgTsd4nUMjFiyAl7xFZhF34yy4hq4qf7jvK1F2PlR3b5I5w==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@astrojs/language-server': 2.8.4(typescript@5.4.3)
+      '@astrojs/language-server': 2.8.4(prettier@3.2.5)(typescript@5.4.3)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -84,7 +87,7 @@ packages:
     resolution: {integrity: sha512-tGmHvrhpzuz0JBHaJX8GywN9g4rldVNHtkoVDC3m/DdzBO70jGoVuc0uuNVglRYnsdwkbG0K02Iw3nOOR3/Y4g==}
     dev: false
 
-  /@astrojs/language-server@2.8.4(typescript@5.4.3):
+  /@astrojs/language-server@2.8.4(prettier@3.2.5)(typescript@5.4.3):
     resolution: {integrity: sha512-sJH5vGTBkhgA8+hdhzX78UUp4cFz4Mt7xkEkevD188OS5bDMkaue6hK+dtXWM47mnrXFveXA2u38K7S+5+IRjA==}
     hasBin: true
     peerDependencies:
@@ -104,10 +107,11 @@ packages:
       '@volar/language-service': 2.1.5
       '@volar/typescript': 2.1.5
       fast-glob: 3.3.2
+      prettier: 3.2.5
       volar-service-css: 0.0.34(@volar/language-service@2.1.5)
       volar-service-emmet: 0.0.34(@volar/language-service@2.1.5)
       volar-service-html: 0.0.34(@volar/language-service@2.1.5)
-      volar-service-prettier: 0.0.34(@volar/language-service@2.1.5)
+      volar-service-prettier: 0.0.34(@volar/language-service@2.1.5)(prettier@3.2.5)
       volar-service-typescript: 0.0.34(@volar/language-service@2.1.5)
       volar-service-typescript-twoslash-queries: 0.0.34(@volar/language-service@2.1.5)
       vscode-html-languageservice: 5.2.0
@@ -2162,6 +2166,7 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    requiresBuild: true
     dev: false
 
   /color-string@1.9.1:
@@ -4280,6 +4285,11 @@ packages:
       which-pm: 2.0.0
     dev: false
 
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   /printable-characters@1.0.42:
     resolution: {integrity: sha512-dKp+C4iXWK4vVYZmYSd0KBH5F/h1HoZRsbJ82AVKRO3PEo8L4lBS/vLwhVtpwwuYcoIsVY+1JYKR268yn480uQ==}
 
@@ -5275,7 +5285,7 @@ packages:
       vscode-uri: 3.0.8
     dev: false
 
-  /volar-service-prettier@0.0.34(@volar/language-service@2.1.5):
+  /volar-service-prettier@0.0.34(@volar/language-service@2.1.5)(prettier@3.2.5):
     resolution: {integrity: sha512-BNfJ8FwfPi1Wm/JkuzNjraOLdtKieGksNT/bDyquygVawv1QUzO2HB1hiMKfZGdcSFG5ZL9R0j7bBfRTfXA2gg==}
     peerDependencies:
       '@volar/language-service': ~2.1.0
@@ -5287,6 +5297,7 @@ packages:
         optional: true
     dependencies:
       '@volar/language-service': 2.1.5
+      prettier: 3.2.5
       vscode-uri: 3.0.8
     dev: false
 
