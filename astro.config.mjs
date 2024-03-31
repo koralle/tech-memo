@@ -30,7 +30,8 @@ export default defineConfig({
             { label: 'Rust', link: '/rust/' },
             { label: 'React', link: '/react/' },
             { label: 'JavaScript', link: '/js/' },
-            { label: 'TypeScript', link: '/ts/' }
+            { label: 'TypeScript', link: '/ts/' },
+            { label: 'FrontEnd', link: '/frontend/' }
           ]
         }
       ]
