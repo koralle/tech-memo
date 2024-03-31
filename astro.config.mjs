@@ -25,14 +25,34 @@ export default defineConfig({
       favicon: '/images/favicon.svg',
       sidebar: [
         {
-          label: 'カテゴリー',
-          items: [
-            { label: 'Rust', link: '/rust/' },
-            { label: 'React', link: '/react/' },
-            { label: 'JavaScript', link: '/js/' },
-            { label: 'TypeScript', link: '/ts/' },
-            { label: 'FrontEnd', link: '/frontend/' }
-          ]
+          label: 'React',
+          autogenerate: {
+            directory: 'react'
+          }
+        },
+        {
+          label: 'JavaScript',
+          autogenerate: {
+            directory: 'javascript'
+          }
+        },
+        {
+          label: 'TypeScript',
+          autogenerate: {
+            directory: 'typescript'
+          }
+        },
+        {
+          label: 'Rust',
+          autogenerate: {
+            directory: 'rust'
+          }
+        },
+        {
+          label: 'フロントエンド',
+          autogenerate: {
+            directory: 'frontend'
+          }
         }
       ]
     })
