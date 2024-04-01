@@ -16,7 +16,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/cloudflare": "^9.2.1",
-    "@astrojs/starlight": "^0.21.2",
+    "@astrojs/starlight": "^0.21.3",
     "astro": "^4.5.12",
     "typescript": "^5.4.3"
   },
@@ -24,6 +24,6 @@
     "@cloudflare/workers-types": "^4.20240329.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "wrangler": "^3.41.0"
+    "wrangler": "^3.42.0"
   }
 }
