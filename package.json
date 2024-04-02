@@ -1,7 +1,14 @@
 {
+  "private": true,
   "name": "tech-memo",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@8.15.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koralle/tech-memo"
+  },
+  "homepage": "https://memo.koralle-mgmg.com",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -25,5 +32,11 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "wrangler": "^3.43.0"
+  },
+  "engines": {
+    "node": ">=20.x",
+    "pnpm": ">=8.x",
+    "npm": "please use pnpm!",
+    "yarn": "please use pnpm!"
   }
 }
