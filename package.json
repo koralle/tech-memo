@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/koralle/tech-memo"
   },
+  "homepage": "https://memo.koralle-mgmg.com",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
