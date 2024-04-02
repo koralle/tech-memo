@@ -32,5 +32,11 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "wrangler": "^3.42.0"
+  },
+  "engines": {
+    "node": ">=20.x",
+    "pnpm": ">=8.x",
+    "npm": "please use pnpm!",
+    "yarn": "please use pnpm!"
   }
 }
