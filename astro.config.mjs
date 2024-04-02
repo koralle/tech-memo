@@ -53,6 +53,12 @@ export default defineConfig({
           autogenerate: {
             directory: 'frontend'
           }
+        },
+        {
+          label: 'Cloudflare',
+          autogenerate: {
+            directory: 'cloudflare'
+          }
         }
       ]
     })
