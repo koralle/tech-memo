@@ -1,0 +1,159 @@
+---
+title: TypeScriptのパフォーマンス（MicrosoftのWiki）
+decription: MicrosoftのWikiにあるTypeScriptのパフォーマンスに関するページを読んだメモ
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+## 元ページ
+
+[これ](https://github.com/microsoft/TypeScript/wiki/Performance)
+
+## リード文の翻訳
+
+> TypeScriptを設定する簡単な方法があり、より高速なコンパイルや編集が可能になる。このようなプラクティスは、早い段階で採用できればできるほどよい。ベストプラクティスだけでなく、コンパイルや編集の遅さを調査するための一般的なテクニックや、一般的な修正方法、そして最後の手段としてTypeScriptチームが問題を調査するための一般的な方法もあります。
+
+## Writing Easy-to-Compile Code
+
+### [Preferring Interfaces Over Intersections](https://github.com/microsoft/TypeScript/wiki/Performance#preferring-interfaces-over-intersections)
+
+型の拡張をする際は型エイリアスのIntersection(&) 型を使うよりも、interfaceを使う方がいいらしい。
+
+実際、パフォーマンス面というわけではないが`interface`を使った方がLSの`textDocument/hover`の表示がわかりやすい気はしてきた。
+
+```ts
+type Human = {
+  name: string
+  age: number
+}
+
+// Better
+// `interface: Student` when textDocument/hover
+interface Student extends Human {
+  studentId: string
+}
+
+// Not so good
+// `type Student2 = Human & { studentId: string } when textDocument/hover
+type Student2 = Human & { studentId: string }
+```
+
+### [Using Type Annotations](https://github.com/microsoft/TypeScript/wiki/Performance#using-type-annotations)
+
+コードが遅いなと感じたら、型アノテーションをちゃんと書くとコンパイラの負担が減ってパフォーマンスが向上するケースがあるらしい。
+
+<Aside>後でちゃんとまとめる</Aside>
+
+### [Preferring Base Types Over Unions](https://github.com/microsoft/TypeScript/wiki/Performance#preferring-base-types-over-unions)
+
+こういうケース、ユニオンでつなぐ要素が12個以上になるとコンパイル速度が遅くなるんだとか。
+
+```ts
+interface WeekdaySchedule {
+  day: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday'
+  wake: Time
+  startWork: Time
+  endWork: Time
+  sleep: Time
+}
+
+interface WeekendSchedule {
+  day: 'Saturday' | 'Sunday'
+  wake: Time
+  familyMeal: Time
+  sleep: Time
+}
+
+declare function printSchedule(schedule: WeekdaySchedule | WeekendSchedule)
+```
+
+解決策としては「ちゃんとサブタイプをつくろうね」とのこと。
+
+型の設計って奥が深い...
+
+```ts
+interface Schedule {
+  day:
+    | 'Monday'
+    | 'Tuesday'
+    | 'Wednesday'
+    | 'Thursday'
+    | 'Friday'
+    | 'Saturday'
+    | 'Sunday'
+  wake: Time
+  sleep: Time
+}
+
+interface WeekdaySchedule extends Schedule {
+  day: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday'
+  startWork: Time
+  endWork: Time
+}
+
+interface WeekendSchedule extends Schedule {
+  day: 'Saturday' | 'Sunday'
+  familyMeal: Time
+}
+
+declare function printSchedule(schedule: Schedule)
+```
+
+### [Naming Complex Types](https://github.com/microsoft/TypeScript/wiki/Performance#naming-complex-types)
+
+こういうケース。返り値の部分を名前付きの型エイリアスとして切り出すとキャッシュが効くらしい。
+
+```ts
+interface SomeType<T> {
+  foo<U>(
+    x: U
+  ): U extends TypeA<T>
+    ? ProcessTypeA<U, T>
+    : U extends TypeB<T>
+      ? ProcessTypeB<U, T>
+      : U extends TypeC<T>
+        ? ProcessTypeC<U, T>
+        : U
+}
+```
+
+具体的にはこうする。
+
+```ts
+type FooResult<U, T> =
+  U extends TypeA<T>
+    ? ProcessTypeA<U, T>
+    : U extends TypeB<T>
+      ? ProcessTypeB<U, T>
+      : U extends TypeC<T>
+        ? ProcessTypeC<U, T>
+        : U
+
+interface SomeType<T> {
+  foo<U>(x: U): FooResult<U, T>
+}
+```
+
+## Using Project References
+
+T.B.D
+
+## Configuring `tsconfig.json` or `jsconfig.json`
+
+T.B.D
+
+## Configuring Other Build Tools
+
+T.B.D
+
+## Investigating Issues
+
+T.B.D
+
+## Common Issues
+
+T.B.D
+
+## Filing an Issue
+
+T.B.D
