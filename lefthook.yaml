@@ -1,0 +1,19 @@
+pre-commit:
+  piped: false
+  commands:
+    1_check:
+      run: pnpm lefthook run check
+
+check:
+  parallel: true
+  commands:
+    astro-check:
+      tags: Prettier
+      files: git diff --name-only HEAD
+      run: pnpm astro check
+
+    prettier-check:
+      tags: Prettier
+      glob: '**/*.{ts,tsx,js,jsx,json,md,mdx,astro}'
+      files: git diff --name-only HEAD
+      run: pnpm prettier -c {staged_files}
