@@ -23,18 +23,18 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/cloudflare": "^9.2.1",
-    "@astrojs/starlight": "^0.21.3",
-    "astro": "^4.5.13",
-    "typescript": "^5.4.3"
+    "@astrojs/starlight": "^0.21.4",
+    "astro": "^4.5.16",
+    "typescript": "^5.4.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240329.0",
+    "@cloudflare/workers-types": "^4.20240405.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "wrangler": "^3.43.0"
+    "wrangler": "^3.48.0"
   },
   "engines": {
-    "node": ">=20.12.0",
+    "node": ">=20.12.1",
     "pnpm": ">=8.15.6",
     "npm": "please use pnpm!",
     "yarn": "please use pnpm!"
