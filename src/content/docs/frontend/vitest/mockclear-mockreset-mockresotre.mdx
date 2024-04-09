@@ -1,0 +1,47 @@
+---
+title: VitestのmockClear, mockReset, mockRestore
+description: VitestのmockClear, mockReset, mockRestoreの違いがわからないのでメモる
+---
+
+## [`vi.mockClear()`](https://vitest.dev/api/mock.html#mockclear)
+
+> Clears all information about every call. After calling it, all properties on .mock will return empty state. This method does not reset implementations. It is useful if you need to clean up mock between different assertions.
+
+### [`vi.clearAllMocks()`](https://vitest.dev/api/vi.html#vi-clearallmocks)
+
+## [`vi.mockReset()`](https://vitest.dev/api/mock.html#mockreset)
+
+> Does what mockClear does and makes inner implementation an empty function (returning undefined when invoked). This also resets all "once" implementations. This is useful when you want to completely reset a mock to the default state.
+
+### [`vi.resetAllMocks()`](https://vitest.dev/api/vi.html#vi-resetallmocks)
+
+## [`vi.mockRestore()`](https://vitest.dev/api/mock.html#mockrestore)
+
+> Does what mockReset does and restores inner implementation to the original function.
+>
+> Note that restoring mock from vi.fn() will set implementation to an empty function that returns undefined. Restoring a vi.fn(impl) will restore implementation to impl.
+
+### [`vi.restoreAllMocks()`](https://vitest.dev/api/vi.html#vi-restoreallmocks)
+
+全てのspyに対して`mockRestore()`を呼ぶ。
+
+例えば、以下のコードでは
+
+- `vi.restoreAllMocks()`を呼ぶまでは10を返す`getApples()`関数のモックが有効
+- `vi.restoreAllMocks()`を呼んだ後は42を返す`getApples()`関数の元の実装が有効
+
+となる。
+
+```ts
+const cart = {
+  getApples: () => 42
+}
+
+const spy = vi.spyOn(cart, 'getApples').mockReturnValue(10)
+
+console.log(cart.getApples()) // 10
+vi.restoreAllMocks()
+console.log(cart.getApples()) // 42
+spy.mockReturnValue(10)
+console.log(cart.getApples()) // still 42!
+```
