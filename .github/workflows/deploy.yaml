@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Setup
-        uses: ./github/composit-actions/cache-and-install
+        uses: ./github/composite-actions/cache-and-install
 
       - name: Build
         shell: bash
