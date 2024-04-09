@@ -1,0 +1,28 @@
+---
+title: ArrayBufferの使い方メモ
+description: ArrayBufferの使い方をよく忘れるのでメモ
+---
+
+## ArrayBufferって何
+
+[MDNのドキュメント](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)より
+
+> ArrayBuffer オブジェクトは、一般的な生のバイナリーデータバッファーを表現するために使用します。
+>
+> これはバイトの配列で、他の言語ではよく「バイト配列」と呼ばれます。ArrayBuffer の内容を直接操作することはできません。代わりに、バッファーを特定の形式で表現する型付き配列オブジェクトまたは DataView オブジェクトのいずれかを作成して、バッファーの内容を読み書きします。
+>
+> ArrayBuffer() コンストラクターは、指定した長さの ArrayBuffer をバイト単位で作成します。既存のデータから、たとえば、Base64 文字列やローカルファイルからから配列バッファーを取得することもできます。
+>
+> ArrayBuffer は移譲可能オブジェクトです。
+
+### ついでにDataViewについて
+
+[MDNのドキュメント](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/DataView)より
+
+> DataView ビューは ArrayBuffer の多様な数値型を、プラットフォームのエンディアンに関係なく読み書きするための低水準インターフェイスを提供します。
+
+## 参考リンク
+
+これがめちゃくちゃ詳しい。
+
+[ArrayBuffer, binary arrays](https://ja.javascript.info/arraybuffer-binary-arrays)

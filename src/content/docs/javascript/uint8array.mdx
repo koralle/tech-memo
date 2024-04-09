@@ -1,0 +1,62 @@
+---
+title: Uint8Arrayの使い方メモ
+description: 意外とUint8Arrayの使い方を忘れるのでメモ
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+## Uint8Arrayって何
+
+[MDNのドキュメント](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)を見てみよう。
+
+こう書いてある。
+
+> Uint8Array は型付き配列で、 8 ビット符号なし整数値の配列を表します。中身は 0 で初期化されます。生成されると、配列内の要素はそのオブジェクトのメソッドを使用するか、配列の標準的な添字の構文 (すなわち、ブラケット記法) を使用するかして参照することができます。
+
+## Uint8Arrayを作ってみる
+
+`new Uint8Array()`で作ってもいいが、以下の静的メソッドを使うこともできる。
+
+- `Uint8Array.of()`
+- `Uint8Array.from()`
+
+### Examples
+
+```js
+const arr1 = Uint8Array.of(1, 2, 3, 4, 5)
+arr1.forEach((v, i) => console.log(i, v))
+// 0 1
+// 1 2
+// 2 3
+// 3 4
+// 4 5
+
+const arr2 = Uint8Array.from([1, 2, 3, 4, 5])
+arr2.forEach((v, i) => console.log(i, v))
+// 0 1
+// 1 2
+// 2 3
+// 3 4
+// 4 5
+```
+
+<Aside>
+  因みに、`Uint8Array.of()`や`UintArray.from()`に数値型以外の値を渡すとエラーにはならず、代わりに0が格納されるみたい。
+</Aside>
+
+## Uint8Arrayから別の型へ変換する
+
+### `TextDecoder`を使って文字列型に変換する
+
+```ts
+// Uint8Arrayの作成
+const uint8Array = new Uint8Array([
+  0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64
+])
+
+// TextDecoderでUint8Arrayを文字列に変換
+const decoder = new TextDecoder('utf-8')
+const decodedString = decoder.decode(uint8Array)
+
+console.log(decodedString) // 出力: "Hello, world"
+```
