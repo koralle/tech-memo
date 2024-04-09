@@ -6,6 +6,11 @@ import starlight from '@astrojs/starlight'
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
+  vite: {
+    ssr: {
+      external: ['node:url', 'node:path', 'node:child_process', 'node:fs']
+    }
+  },
   adapter: cloudflare({
     runtime: {
       mode: 'local'
