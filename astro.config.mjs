@@ -28,6 +28,7 @@ export default defineConfig({
         src: './src/assets/logo.svg'
       },
       favicon: '/images/favicon.svg',
+      lastUpdated: true,
       sidebar: [
         {
           label: 'React',
