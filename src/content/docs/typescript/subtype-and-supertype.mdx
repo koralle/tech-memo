@@ -1,0 +1,51 @@
+---
+title: サブタイプとスーパータイプ
+description: TypeScriptのサブタイプとスーパータイプについてメモ
+---
+
+## 型を集合として考えてみる。
+
+以下のコードで考えてみる。
+
+```ts
+const a: number = 1
+
+const b: number | string = a // OK
+```
+
+`number`型の集合は`number | string`型の集合に含まれる。  
+このとき、`number`型は`number | string`型の**サブタイプ**である。逆に、`number | string`型は`number`型の**スーパータイプ**である。  
+これは `number <: number | string` と書ける。
+
+とにかく型を集合として考えるというのが重要な気がする
+
+### 更に深掘る
+
+以下のコードで考えてみる。`volume`関数は体積を計算する関数。
+
+```ts
+type Cubic = {
+  width: number
+  height: number
+  depth: number
+}
+
+type Quadratic = {
+  width: number
+  height: number
+}
+
+const volume = (shape: Cubic) => {
+  return shape.width * shape.height * shape.depth
+}
+```
+
+このとき、`Quadratic`型は`Cubic`型のスーパータイプである。
+
+なぜなら、`Quadratic`型の集合に含まれる要素の内、更に`depth`というプロパティを持つ要素が`Cubic`型の集合を構成するから。  
+つまり、`Cubic <: Quadratic`である。
+
+この時、`Cubic`型の値を引数に受け取る`volume`関数に`Quadratic`型の値を渡すことはできない。  
+なぜなら、`Quadratic`型の値には`depth`プロパティを持たない物も存在するから。
+
+視点を変えて言えば、`Cubic`型のサブタイプは`volume`関数の引数として渡すことができる。
