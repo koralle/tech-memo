@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
@@ -13,20 +13,20 @@ importers:
         version: 0.5.10(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.5)
       '@astrojs/cloudflare':
         specifier: ^9.2.1
-        version: 9.2.1(astro@4.6.1)
+        version: 9.2.1(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))
       '@astrojs/starlight':
         specifier: ^0.21.5
-        version: 0.21.5(astro@4.6.1)
+        version: 0.21.5(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))
       astro:
-        specifier: ^4.6.1
-        version: 4.6.1(typescript@5.4.5)
+        specifier: ^4.6.3
+        version: 4.6.3(@types/node@20.11.30)(typescript@5.4.5)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^4.20240405.0
-        version: 4.20240405.0
+        specifier: ^4.20240419.0
+        version: 4.20240419.0
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -34,8 +34,8 @@ importers:
         specifier: ^0.13.0
         version: 0.13.0
       wrangler:
-        specifier: ^3.50.0
-        version: 3.50.0(@cloudflare/workers-types@4.20240405.0)
+        specifier: ^3.51.2
+        version: 3.51.2(@cloudflare/workers-types@4.20240419.0)
 
 packages:
 
@@ -280,8 +280,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20240405.0':
-    resolution: {integrity: sha512-sEVOhyOgXUwfLkgHqbLZa/sfkSYrh7/zLmI6EZNibPaVPvAnAcItbNNl3SAlLyLKuwf8m4wAIAgu9meKWCvXjg==}
+  '@cloudflare/workers-types@4.20240419.0':
+    resolution: {integrity: sha512-UM16sr4HEe0mDj6C5OFcodzdj/CnEp0bfncAq3g7OpDsoZ1sBrfsMrb7Yc4f8J81EemvmQZyE6sSanpURtVkcQ==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -884,6 +884,9 @@ packages:
   '@types/babel__traverse@7.20.5':
     resolution: {integrity: sha512-WXCyOcRtH37HAUkpXhUduaxdm82b4GSlyTqajXviN4EfiuPgNYR109xMCKvpl6zPIpua0DGlMEDCq+g8EdoheQ==}
 
+  '@types/cookie@0.5.4':
+    resolution: {integrity: sha512-7z/eR6O859gyWIAjuvBWFzNURmf2oPBmJlfVWkwehU5nzIyjwBsTh7WMmEEV4JFnHuQ3ex4oyTvfKzcyJVDBNA==}
+
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
@@ -1038,8 +1041,8 @@ packages:
     peerDependencies:
       astro: ^4.0.0-beta || ^3.3.0
 
-  astro@4.6.1:
-    resolution: {integrity: sha512-gcL22NEhuRi4wu9/x5Kn2eJf7nT6GeU5BxdN6AHbUnX6UzEDIWtpgHs5lBIZYExKbHKN9PjEGXWQzQtFwLU+5g==}
+  astro@4.6.3:
+    resolution: {integrity: sha512-p2zs1Gac+ysdc/yFCoc8pOXTZE5L9foAtmqUzUVL22WX68bYTRovd03GRs7J1MDpwzsl9kJtlK20ROpjyIFpNw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1978,8 +1981,8 @@ packages:
     engines: {node: '>=16.13'}
     hasBin: true
 
-  miniflare@3.20240405.1:
-    resolution: {integrity: sha512-oShOR/ckr9JTO1bkPQH0nXvuSgJjoE+E5+M1tvP01Q8Z+Q0GJnzU2+FDYUH8yIK/atHv7snU8yy0X6KWVn1YdQ==}
+  miniflare@3.20240405.2:
+    resolution: {integrity: sha512-n/V5m9GVMN37U5gWdrNXKx2d1icLXtcIKcxWtLslH4RTaebZJdSRmp12UHyuQsKlaSpTkNqyzLVtCEgt2bhRSA==}
     engines: {node: '>=16.13'}
     hasBin: true
 
@@ -2794,8 +2797,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.50.0:
-    resolution: {integrity: sha512-JlLuch+6DtaC5HGp8YD9Au++XvMv34g3ySdlB5SyPbaObELi8P9ZID5vgyf9AA75djzxL7cuNOk1YdKCJEuq0w==}
+  wrangler@3.51.2:
+    resolution: {integrity: sha512-8TRUwzPHj6+uPDzY0hBJ9/YwniEF9pqMGe5qbqLP/XsHTCWxIFib5go374zyCkmuVh23AwV7NuTA6gUtSqZ8pQ==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -2889,12 +2892,12 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@9.2.1(astro@4.6.1)':
+  '@astrojs/cloudflare@9.2.1(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))':
     dependencies:
       '@astrojs/underscore-redirects': 0.3.3
-      '@cloudflare/workers-types': 4.20240405.0
+      '@cloudflare/workers-types': 4.20240419.0
       '@iarna/toml': 2.2.5
-      astro: 4.6.1(typescript@5.4.5)
+      astro: 4.6.3(@types/node@20.11.30)(typescript@5.4.5)
       dotenv: 16.4.5
       esbuild: 0.19.12
       find-up: 6.3.0
@@ -2921,8 +2924,6 @@ snapshots:
       '@volar/language-service': 2.1.5
       '@volar/typescript': 2.1.5
       fast-glob: 3.3.2
-      prettier: 3.2.5
-      prettier-plugin-astro: 0.13.0
       volar-service-css: 0.0.34(@volar/language-service@2.1.5)
       volar-service-emmet: 0.0.34(@volar/language-service@2.1.5)
       volar-service-html: 0.0.34(@volar/language-service@2.1.5)
@@ -2931,6 +2932,9 @@ snapshots:
       volar-service-typescript-twoslash-queries: 0.0.34(@volar/language-service@2.1.5)
       vscode-html-languageservice: 5.2.0
       vscode-uri: 3.0.8
+    optionalDependencies:
+      prettier: 3.2.5
+      prettier-plugin-astro: 0.13.0
     transitivePeerDependencies:
       - typescript
 
@@ -2980,12 +2984,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@2.2.1(astro@4.6.1)':
+  '@astrojs/mdx@2.2.1(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))':
     dependencies:
       '@astrojs/markdown-remark': 4.3.1
       '@mdx-js/mdx': 3.0.1
       acorn: 8.11.3
-      astro: 4.6.1(typescript@5.4.5)
+      astro: 4.6.3(@types/node@20.11.30)(typescript@5.4.5)
       es-module-lexer: 1.4.2
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -3014,15 +3018,15 @@ snapshots:
       sitemap: 7.1.1
       zod: 3.22.4
 
-  '@astrojs/starlight@0.21.5(astro@4.6.1)':
+  '@astrojs/starlight@0.21.5(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))':
     dependencies:
-      '@astrojs/mdx': 2.2.1(astro@4.6.1)
+      '@astrojs/mdx': 2.2.1(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))
       '@astrojs/sitemap': 3.1.1
       '@pagefind/default-ui': 1.0.4
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
-      astro: 4.6.1(typescript@5.4.5)
-      astro-expressive-code: 0.33.5(astro@4.6.1)
+      astro: 4.6.3(@types/node@20.11.30)(typescript@5.4.5)
+      astro-expressive-code: 0.33.5(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.1
       hast-util-select: 6.0.2
@@ -3233,7 +3237,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20240405.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20240405.0': {}
+  '@cloudflare/workers-types@4.20240419.0': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -3638,6 +3642,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.24.0
 
+  '@types/cookie@0.5.4': {}
+
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
@@ -3803,13 +3809,13 @@ snapshots:
 
   astring@1.8.6: {}
 
-  astro-expressive-code@0.33.5(astro@4.6.1):
+  astro-expressive-code@0.33.5(astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5)):
     dependencies:
-      astro: 4.6.1(typescript@5.4.5)
+      astro: 4.6.3(@types/node@20.11.30)(typescript@5.4.5)
       hast-util-to-html: 8.0.4
       remark-expressive-code: 0.33.5
 
-  astro@4.6.1(typescript@5.4.5):
+  astro@4.6.3(@types/node@20.11.30)(typescript@5.4.5):
     dependencies:
       '@astrojs/compiler': 2.7.1
       '@astrojs/internal-helpers': 0.4.0
@@ -3822,6 +3828,7 @@ snapshots:
       '@babel/traverse': 7.24.1
       '@babel/types': 7.24.0
       '@types/babel__core': 7.20.5
+      '@types/cookie': 0.5.4
       acorn: 8.11.3
       aria-query: 5.3.0
       axobject-query: 4.0.0
@@ -3867,8 +3874,8 @@ snapshots:
       tsconfck: 3.0.3(typescript@5.4.5)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.2.6
-      vitefu: 0.2.5(vite@5.2.6)
+      vite: 5.2.6(@types/node@20.11.30)
+      vitefu: 0.2.5(vite@5.2.6(@types/node@20.11.30))
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.22.4
@@ -5283,7 +5290,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  miniflare@3.20240405.1:
+  miniflare@3.20240405.2:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.11.3
@@ -5971,7 +5978,7 @@ snapshots:
       typescript: 5.4.5
 
   tsconfck@3.0.3(typescript@5.4.5):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.5
 
   tslib@2.6.2: {}
@@ -6129,56 +6136,62 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.2.6:
+  vite@5.2.6(@types/node@20.11.30):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.0
     optionalDependencies:
+      '@types/node': 20.11.30
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.2.6):
-    dependencies:
-      vite: 5.2.6
+  vitefu@0.2.5(vite@5.2.6(@types/node@20.11.30)):
+    optionalDependencies:
+      vite: 5.2.6(@types/node@20.11.30)
 
   volar-service-css@0.0.34(@volar/language-service@2.1.5):
     dependencies:
-      '@volar/language-service': 2.1.5
       vscode-css-languageservice: 6.2.13
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.5
 
   volar-service-emmet@0.0.34(@volar/language-service@2.1.5):
     dependencies:
-      '@volar/language-service': 2.1.5
       '@vscode/emmet-helper': 2.9.2
       vscode-html-languageservice: 5.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.1.5
 
   volar-service-html@0.0.34(@volar/language-service@2.1.5):
     dependencies:
-      '@volar/language-service': 2.1.5
       vscode-html-languageservice: 5.2.0
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.5
 
   volar-service-prettier@0.0.34(@volar/language-service@2.1.5)(prettier@3.2.5):
     dependencies:
+      vscode-uri: 3.0.8
+    optionalDependencies:
       '@volar/language-service': 2.1.5
       prettier: 3.2.5
-      vscode-uri: 3.0.8
 
   volar-service-typescript-twoslash-queries@0.0.34(@volar/language-service@2.1.5):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 2.1.5
 
   volar-service-typescript@0.0.34(@volar/language-service@2.1.5):
     dependencies:
-      '@volar/language-service': 2.1.5
       path-browserify: 1.0.1
       semver: 7.6.0
       typescript-auto-import-cache: 0.3.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-nls: 5.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.1.5
 
   vscode-css-languageservice@6.2.13:
     dependencies:
@@ -6253,16 +6266,15 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240405.0
       '@cloudflare/workerd-windows-64': 1.20240405.0
 
-  wrangler@3.50.0(@cloudflare/workers-types@4.20240405.0):
+  wrangler@3.51.2(@cloudflare/workers-types@4.20240419.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.1
-      '@cloudflare/workers-types': 4.20240405.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
       chokidar: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240405.1
+      miniflare: 3.20240405.2
       nanoid: 3.3.7
       path-to-regexp: 6.2.1
       resolve: 1.22.8
@@ -6272,6 +6284,7 @@ snapshots:
       ts-json-schema-generator: 1.5.1
       xxhash-wasm: 1.0.2
     optionalDependencies:
+      '@cloudflare/workers-types': 4.20240419.0
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
