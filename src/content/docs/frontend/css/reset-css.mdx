@@ -1,0 +1,47 @@
+---
+title: リセットCSSに書いておきたいCSS
+description: リセットCSSに書いておきたいスタイル定義をメモ
+---
+
+## 使えそうなリセットCSS
+
+[元記事](https://coliss.com/articles/build-websites/operation/css/css-reset-for-modern-browser.html)
+
+## `<img />`要素
+
+[元記事](https://coliss.com/articles/build-websites/operation/css/sensible-defaults-for-img-elements.html)
+
+```css
+img {
+  max-width: 100%; /* 1 */
+  height: auto; /* 1 */
+  vertical-align: middle; /* 2 */
+  font-style: italic; /* 3 */
+  background-repeat: no-repeat; /* 4 */
+  background-size: cover; /* 4 */
+  shape-margin: 0.75rem; /* 5 */
+}
+```
+
+## `<button />`要素
+
+[元記事](https://coliss.com/articles/build-websites/operation/css/css-button-styles.html)
+
+```css`
+.button,
+::file-selector-button {
+inline-size: fit-content;
+touch-action: manipulation;
+user-select: none;
+}
+
+- {
+  &:focus-visible {
+  outline: 2px solid magenta;
+  outline-offset: 2px;
+  }
+  }
+
+```
+
+```
