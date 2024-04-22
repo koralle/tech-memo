@@ -1,0 +1,129 @@
+---
+title: Zellijの使い方
+description: Zellijの使い方を整理する
+---
+
+## Zellijのコマンド
+
+### `attach`
+
+```bash
+zellij attach
+```
+
+or
+
+```bash
+zellij a
+```
+
+### `list-sessions`
+
+現在動いているセッションを表示できるコマンド。
+
+```bash
+zellij list-sessions
+```
+
+or
+
+```bash
+zellij ls
+```
+
+### `kill-sessions`
+
+現在動いているセッションを削除できるコマンド。
+
+```bash
+zellij kill-sessions <session-name>
+```
+
+or
+
+```bash
+zellij k <session-name>
+```
+
+### `kill-all-sessions`
+
+現在動いているセッションを全て削除できるコマンド。
+
+```bash
+zellij kill-all-sessions
+```
+
+or
+
+```bash
+zellij ka
+```
+
+## Zellijの設定ファイルを生成する
+
+[ここ](https://zellij.dev/documentation/configuration)を見ながら作る
+
+```bash
+mkdir ~/.config/zellij
+zellij setup --dump-config > ~/.config/zellij/config.kdl
+```
+
+## Zellijのテーマ設定
+
+こんな感じで新しいテーマを生やせる。
+
+```kdl
+// ~/.config/zellij/config.kdl
+
+theme {
+    <theme-name> {
+        fg "#D8DEE9"
+        bg "#2E3440"
+        black "#3B4252"
+        red "#BF616A"
+        green "#A3BE8C"
+        yellow "#EBCB8B"
+        blue "#81A1C1"
+        magenta "#B48EAD"
+        cyan "#88C0D0"
+        white "#E5E9F0"
+        orange "#D08770"
+    }
+}
+```
+
+例
+
+```kdl
+// ~/.config/zellij/config.kdl
+
+themes {
+    nord {
+        fg "#D8DEE9"
+        bg "#2E3440"
+        black "#3B4252"
+        red "#BF616A"
+        green "#A3BE8C"
+        yellow "#EBCB8B"
+        blue "#81A1C1"
+        magenta "#B48EAD"
+        cyan "#88C0D0"
+        white "#E5E9F0"
+        orange "#D08770"
+    }
+}
+```
+
+新しく生やしたテーマでZellijのセッションを起動するにはこうする。
+
+```bash
+zellij options --theme nord
+```
+
+## `Zellij Edit`
+
+新しいPaneを開いて、その中でファイルを編集する。
+
+```bash
+zellij edit ./main.rs
+```
