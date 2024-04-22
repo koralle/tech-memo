@@ -5,36 +5,35 @@ description: vacuum analyzeって何をやっているのか分からなかっ�
 
 ## 本題に入る前に - PostgreSQLは追記型アーキテクチャだよ
 
-* PostgreSQLはレコードを削除する際に、すぐに既存のレコードを物理削除するのではなく一旦削除フラグの様なものを立てる。
-* レコードの更新時は、その後に新しいレコードを**追記**する形をとる。
+- PostgreSQLはレコードを削除する際に、すぐに既存のレコードを物理削除するのではなく一旦削除フラグの様なものを立てる。
+- レコードの更新時は、その後に新しいレコードを**追記**する形をとる。
 
 ### Pros (ChatGPTに聞いた)
 
-* 並行して動く他のトランザクションがロックされるのを防ぐことができる。
-* データを復元しやすい。
-* トランザクション制御がしやすい。
+- 並行して動く他のトランザクションがロックされるのを防ぐことができる。
+- データを復元しやすい。
+- トランザクション制御がしやすい。
 
 ### Cons (ChatGPTに聞いた)
 
-* ディスク容量を圧迫しやすい。
-* データのフラグメント化が進む。
-* 定期的なVACUUMが必要。
-* データの更新、削除時のオーバーヘッド
+- ディスク容量を圧迫しやすい。
+- データのフラグメント化が進む。
+- 定期的なVACUUMが必要。
+- データの更新、削除時のオーバーヘッド
 
 ## VACUUM
 
 VACUUMは、更新や削除によって生じたデータベースの不要領域を回収する仕組み。
 
-
 ただし、特別な場合を除き、VACUUMによって生じた空き領域はOS側に返却されない（=テーブルサイズが小さくなるわけではない）。  
 これは[ドキュメント](https://www.postgresql.jp/docs/14/sql-vacuum.html)にも書いている。
 
->  しかし余った領域はオペレーティングシステムには(ほとんどの場合)返されません。 同じテーブル内で再利用できるように保持されるだけです。 
+> しかし余った領域はオペレーティングシステムには(ほとんどの場合)返されません。 同じテーブル内で再利用できるように保持されるだけです。
 
 `VACUUM FULL`を使えば空き領域を回収してOS側に返却できるが、デメリットがある。
 
-* 通常のVACUUMよりも時間がかかる。
-* 処理中のテーブルに対するACCESS EXCLUSIVEロックが発生する。
+- 通常のVACUUMよりも時間がかかる。
+- 処理中のテーブルに対するACCESS EXCLUSIVEロックが発生する。
 
 ## `vacuum analyze`とは
 
@@ -42,5 +41,5 @@ T.B.D
 
 ## 参考リンク
 
-* https://www.fujitsu.com/jp/products/software/resources/feature-stories/postgres/article-index/architecture-overview/
-* https://gihyo.jp/dev/feature/01/dex_postgresql/0002
+- https://www.fujitsu.com/jp/products/software/resources/feature-stories/postgres/article-index/architecture-overview/
+- https://gihyo.jp/dev/feature/01/dex_postgresql/0002

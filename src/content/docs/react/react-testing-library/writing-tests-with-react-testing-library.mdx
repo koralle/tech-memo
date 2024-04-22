@@ -5,7 +5,7 @@ sidbar:
   label: React Testing Libraryを使ったテストの書き方
 ---
 
-import { Aside } from "@astrojs/starlight/components"
+import { Aside } from '@astrojs/starlight/components'
 
 ## ドキュメント
 
@@ -45,12 +45,12 @@ screen.getByRole('button', {name: /click me/i})
 ```ts
 // ❌
 await waitFor(() => {
-  fireEvent.keyDown(input, {key: 'ArrowDown'})
+  fireEvent.keyDown(input, { key: 'ArrowDown' })
   expect(screen.getAllByRole('listitem')).toHaveLength(3)
 })
 
 // ✅
-fireEvent.keyDown(input, {key: 'ArrowDown'})
+fireEvent.keyDown(input, { key: 'ArrowDown' })
 await waitFor(() => {
   expect(screen.getAllByRole('listitem')).toHaveLength(3)
 })
@@ -62,11 +62,11 @@ await waitFor(() => {
 というか、それが唯一の用途らしい。
 
 <Aside>
-`query*`や`getBy*`、`findBy*`などの使い分けについては[このページ](https://testing-library.com/docs/dom-testing-library/cheatsheet/#queries)にチートシートがある
+  `query*`や`getBy*`、`findBy*`などの使い分けについては[このページ](https://testing-library.com/docs/dom-testing-library/cheatsheet/#queries)にチートシートがある
 </Aside>
 
 ## 読むと良さそうな記事（随時更新）
 
-* [✅RTL(React Testing Library)、ちゃんと理解して使おうか。](https://zenn.dev/crsc1206/articles/8bf487be129eed)
-* [Mastering in react testing library: 7 tips to optimize your tests](https://blog.stackademic.com/mastering-react-testing-achieving-high-confidence-and-low-maintenance-in-your-code-30313f211fa)
-* [Best Practices for Writing Tests with React Testing Library](https://claritydev.net/blog/improving-react-testing-library-tests)
+- [✅RTL(React Testing Library)、ちゃんと理解して使おうか。](https://zenn.dev/crsc1206/articles/8bf487be129eed)
+- [Mastering in react testing library: 7 tips to optimize your tests](https://blog.stackademic.com/mastering-react-testing-achieving-high-confidence-and-low-maintenance-in-your-code-30313f211fa)
+- [Best Practices for Writing Tests with React Testing Library](https://claritydev.net/blog/improving-react-testing-library-tests)
