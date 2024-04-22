@@ -3,7 +3,7 @@ title: window.navigator.userAgentをVitestでモックする
 description: window.navigator.userAgentをVitestでモックする方法のメモ
 ---
 
-import { Aside } from "@astrojs/starlight/components"
+import { Aside } from '@astrojs/starlight/components'
 
 ## やりたいこと
 
@@ -15,7 +15,7 @@ import { Aside } from "@astrojs/starlight/components"
 https://developer.mozilla.org/ja/docs/Web/API/Navigator/userAgent
 
 <Aside>
-UserAgentの一覧は[このGist](https://gist.github.com/pzb/b4b6f57144aea7827ae4)で見れる。結構更新されてる。
+  UserAgentの一覧は[このGist](https://gist.github.com/pzb/b4b6f57144aea7827ae4)で見れる。結構更新されてる。
 </Aside>
 
 ## Vitestでグローバルなモックを書く
@@ -35,7 +35,7 @@ describe('window.navigator.userAgent mock test', () => {
 
   test('should be passed', () => {
     const userAgent = 'test'
-    vi.stubGlobal("navigator", { userAgent })
+    vi.stubGlobal('navigator', { userAgent })
     expect(window.navigator.userAgent).toBe(userAgent)
   })
 })
