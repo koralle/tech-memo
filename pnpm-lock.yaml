@@ -23,6 +23,9 @@ importers:
       astro:
         specifier: ^4.7.1
         version: 4.7.1(@types/node@20.11.30)(typescript@5.4.5)
+      lite-youtube-embed:
+        specifier: ^0.3.2
+        version: 0.3.2
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -1787,6 +1790,9 @@ packages:
 
   linkedom@0.14.26:
     resolution: {integrity: sha512-mK6TrydfFA7phrnp+1j57ycBwFI5bGSW6YXlw9acHoqF+mP/y+FooEYYyniOt5Ot57FSKB3iwmnuQ1UUyNLm5A==}
+
+  lite-youtube-embed@0.3.2:
+    resolution: {integrity: sha512-b1dgKyF4PHhinonmr3PB172Nj0qQgA/7DE9EmeIXHR1ksnFEC2olWjNJyJGdsN2cleKHRjjsmrziKlwXtPlmLQ==}
 
   load-yaml-file@0.2.0:
     resolution: {integrity: sha512-OfCBkGEw4nN6JLtgRidPX6QxjBQGQf72q3si2uvqyFEMbycSFFHwAZeXx6cJgFM9wmLrf9zBwCP3Ivqa+LLZPw==}
@@ -4668,6 +4674,8 @@ snapshots:
       html-escaper: 3.0.3
       htmlparser2: 8.0.2
       uhyphen: 0.2.0
+
+  lite-youtube-embed@0.3.2: {}
 
   load-yaml-file@0.2.0:
     dependencies:
