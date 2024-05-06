@@ -21,6 +21,7 @@
     "build-cf-types": "wrangler types"
   },
   "dependencies": {
+    "@astro-community/astro-embed-link-preview": "^0.2.0",
     "@astrojs/check": "^0.5.10",
     "@astrojs/cloudflare": "^9.2.1",
     "@astrojs/starlight": "^0.22.1",
