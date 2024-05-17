@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@astro-community/astro-embed-link-preview": "^0.2.0",
-    "@astrojs/check": "^0.6.0",
+    "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "^9.2.1",
-    "@astrojs/starlight": "^0.22.3",
-    "astro": "^4.8.3",
+    "@astrojs/starlight": "^0.22.4",
+    "astro": "^4.8.5",
     "astro-embed": "^0.7.2",
     "lite-youtube-embed": "^0.3.2",
     "typescript": "^5.4.5"
@@ -34,7 +34,7 @@
     "@cloudflare/workers-types": "^4.20240512.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "wrangler": "^3.56.0"
+    "wrangler": "^3.57.0"
   },
   "engines": {
     "node": ">=20.13.1",
