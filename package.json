@@ -24,8 +24,8 @@
     "@astro-community/astro-embed-link-preview": "^0.2.0",
     "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "^9.2.1",
-    "@astrojs/starlight": "^0.22.4",
-    "astro": "^4.8.5",
+    "@astrojs/starlight": "^0.23.1",
+    "astro": "^4.8.6",
     "astro-embed": "^0.7.2",
     "lite-youtube-embed": "^0.3.2",
     "typescript": "^5.4.5"
