@@ -1,0 +1,138 @@
+---
+title: ESLintの周辺ライブラリたち
+description: ESLintの周辺ライブラリたちにはどんなものがあるのかメモっておく
+---
+
+import { LinkPreview } from 'astro-embed'
+
+## ESLint
+
+## `typescript-eslint`
+
+ESLintのASTとTypeScriptのASTは内部表現が異なっているため、ESLint単体ではTypeScriptコードを扱えない。  
+`typescript-eslint`を導入することで、TypeScriptのASTをESLintが扱えるようになる。
+
+<LinkPreview id="https://typescript-eslint.io/" />
+
+## `eslint-plugin-prettier`
+
+PrettierをESLintのRuleとして利用するためのプラグイン。  
+PrettierのフォーマットルールをESLintのRuleとして適用することで、コードのフォーマットを統一する。
+
+<LinkPreview id="https://github.com/prettier/eslint-plugin-prettier" />
+
+## `eslint-config-prettier`
+
+ESLintのフォーマットルールをPrettierのフォーマットルールが競合しないように、該当するESLint Ruleをoffにするプラグイン。
+
+<LinkPreview id="https://github.com/prettier/eslint-config-prettier" />
+
+## `eslint-plugin-react`
+
+React用のESLint Ruleを提供するプラグイン。
+
+<LinkPreview id="https://github.com/jsx-eslint/eslint-plugin-react" />
+
+## `eslint-plugin-react-hooks`
+
+React Hooks用のESLint Ruleを提供するプラグイン。
+
+<LinkPreview id="https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks" />
+
+## `eslint-plugin-import`
+
+ESM形式のimport/exportを解析して、パス間違いやスペルミスなどをチェックするためのプラグイン。
+
+<LinkPreview id="https://www.npmjs.com/package/eslint-plugin-import" />
+
+### `eslint-import-resolver-typescript`
+
+`eslint-plugin-import`をTypeScriptに対応させるためのプラグイン。
+
+<LinkPreview id="https://www.npmjs.com/package/eslint-import-resolver-typescript" />
+
+### `eslint-import-resolver-node`
+
+`eslint-plugin-import`を使用する際に、Node.js形式でモジュール解決するためのプラグイン。
+
+<LinkPreview id="https://www.npmjs.com/package/eslint-import-resolver-node" />
+
+## `eslint-plugin-vitest`
+
+<LinkPreview id="https://github.com/veritem/eslint-plugin-vitest" />
+
+## `eslint-plugin-testing-library`
+
+Testing LibraryのベストプラクティスをESLintでチェックするためのプラグイン。
+
+<LinkPreview id="https://github.com/testing-library/eslint-plugin-testing-library" />
+
+## `@eslint/eslintrc`
+
+Lagacy Formatへの後方互換性を維持するためのライブラリ。  
+このライブラリの`FlatCompat`クラスが重要。  
+このクラスによって、Lagacy Formatをベースに作られたSharable Configやその他設定をそのままFlat Configでも使用することができる。
+
+例えば、[`eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react)及び[`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)は2024/05/17（金）時点でFlat Configに対応してない。
+
+```js
+import { FlatCompat } from "@eslint/eslintrc"
+import {
+  config as tsESLintConfig,
+  configs as tsESLintConfigs,
+  parser as tsESLintParser,
+  plugin as tsESLintPlugin,
+} from "typescript-eslint"
+import globals from "globals"
+import pluginReact from "eslint-plugin-react"
+import pluginReactHooks from "eslint-plugin-react-hooks"
+
+const reactCompat = new FlatCompat({
+  recommendedConfig: pluginReact.configs.recommended,
+})
+
+const reactHooksCompat = new FlatCompat({
+  recommendedConfig: pluginReactHooks.configs.recommended,
+})
+
+export default tsESLintConfig(
+  {
+    ignores: [
+      "node_modules"
+    ]
+  },
+  ...configs.recommended,
+  reactCompat.config({
+    plugins: ["react"],
+    settings: {
+      react: {
+        version: "detect"
+      },
+    },
+  }).map((config) => ({
+    files: ["**/*.{ts,tsx,cts,mts,d.ts}"],
+    ...config
+  }),
+  reactHooksCompat.config({
+    plugins: ["react"],
+    settings: {
+      react: {
+        version: "detect"
+      },
+    },
+  }).map((config) => ({
+    files: ["**/*.{ts,tsx,cts,mts,d.ts}"],
+    ...config
+  }),
+)
+```
+
+ESLintのBlogにも言及がある。
+
+<LinkPreview id="https://eslint.org/blog/2022/08/new-config-system-part-2/#backwards-compatibility-utility" />
+
+## `@eslint/js`
+
+ESLintのSharable Configを提供する。
+
+<LinkPreview id="https://www.npmjs.com/package/@eslint/js" />
