@@ -1,0 +1,30 @@
+---
+title: テーブルの制約を調べる
+description: テーブルの制約を調べる方法をメモ
+---
+
+## どうやってテーブルの制約を調べるか？
+
+```sql
+SELECT
+  *
+FROM
+  information_schema.table_constraints
+WHERE
+  table_name = '<table_name>'
+```
+
+### スキーマを指定する場合は？
+
+`constraint_schema` で列を指定する。
+
+```sql
+SELECT
+  *
+FROM
+  information_schema.table_constraints
+WHERE
+  table_name = '<table_name>'
+AND
+  constraint_schema = '<schema_name>'
+```
