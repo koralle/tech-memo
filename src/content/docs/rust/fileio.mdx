@@ -1,0 +1,117 @@
+---
+title: File IOのやり方
+description: RustでFile I/Oをやるにはどうするかメモ
+---
+
+## 通常（同期処理）のFile I/O
+
+### ファイルを作成する
+
+```rust
+use std::fs::File;
+use std::io::Result;
+
+fn main() -> Result<()> {
+    let f = File::open("test.txt")?;
+
+    dbg!("{:?}", f);
+
+    Ok(())
+}
+```
+
+### （既存の）ファイルを開く
+
+```rust
+use std::fs::File;
+use std::io::Result;
+
+fn main() -> Result<()> {
+    let f = File::open("test.txt")?;
+
+    dbg!("{:?}", f);
+
+    Ok(())
+}
+```
+
+これを`cargo run`で実行するとこのようになる。
+
+```shell
+    Finished dev [unoptimized + debuginfo] target(s) in 0.00s
+     Running `target/debug/rust-fileio-sample`
+[src/main.rs:7:5] "{:?}" = "{:?}"
+[src/main.rs:7:5] f = File {
+    fd: 3,
+    path: "/Users/koralle/sandbox/rust-fileio-sample/test.txt",
+    read: true,
+    write: false,
+}
+```
+
+## tokioを使った非同期処理のFile I/O
+
+tokioを依存関係に追加する。
+
+```bash
+cargo add tokio --features="full"
+```
+
+### ファイルを作成する
+
+その後、こう書けばいい。
+
+```rust
+use tokio::fs::File;
+use tokio::io::Result;
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    let f = File::create("test.txt").await?;
+
+    dbg!("{:?}", f);
+
+    Ok(())
+}
+```
+
+### ファイルを読み出す
+
+ファイルを読み出すには`tokio::io::AsyncReadExt`トレイトをスコープに入れる事に注意する。
+
+```rust
+use tokio::fs::File;
+use tokio::io::{Result, AsyncReadExt};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    let mut f = File::open("test.txt").await?;
+    let mut buf = Vec::new();
+
+    f.read_to_end(&mut buf).await?;
+
+    dbg!("{:?}", buf);
+
+    Ok(())
+}
+```
+
+### ファイルに書き出す
+
+ファイルを読み出すには`tokio::io::AsyncWriteExt`トレイトをスコープに入れる事に注意する。
+
+```rust
+use tokio::fs::File;
+use tokio::io::{Result, AsyncWriteExt};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    let mut f = File::create("test.txt").await?;
+
+    let message = f.write(b"!!!!!!").await?;
+
+    dbg!("{}", message);
+
+    Ok(())
+}
+```
