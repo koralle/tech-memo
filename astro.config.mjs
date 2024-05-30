@@ -61,6 +61,12 @@ export default defineConfig({
           }
         },
         {
+          label: 'Accessibility',
+          autogenerate: {
+            directory: 'accessibility'
+          }
+        },
+        {
           label: 'Cloudflare',
           autogenerate: {
             directory: 'cloudflare'
