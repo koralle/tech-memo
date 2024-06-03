@@ -13,7 +13,7 @@ importers:
         version: 0.2.0
       '@astrojs/check':
         specifier: ^0.7.0
-        version: 0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.2.5)(typescript@5.4.5)
+        version: 0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.3.0)(typescript@5.4.5)
       '@astrojs/cloudflare':
         specifier: ^9.2.1
         version: 9.2.1(astro@4.9.2(@types/node@20.11.30)(typescript@5.4.5))
@@ -34,17 +34,17 @@ importers:
         version: 5.4.5
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^4.20240529.0
-        version: 4.20240529.0
+        specifier: ^4.20240603.0
+        version: 4.20240603.0
       prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
+        specifier: ^3.3.0
+        version: 3.3.0
       prettier-plugin-astro:
         specifier: ^0.14.0
         version: 0.14.0
       wrangler:
-        specifier: ^3.57.2
-        version: 3.57.2(@cloudflare/workers-types@4.20240529.0)
+        specifier: ^3.58.0
+        version: 3.58.0(@cloudflare/workers-types@4.20240603.0)
 
 packages:
 
@@ -309,8 +309,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20240529.0':
-    resolution: {integrity: sha512-W5obfjAwCNdYk3feUHtDfUxtTU6WIq83k6gmrLLJv+HkgCkOTwwrDNs+3w1Qln0tMj+FQx/fbwxw3ZuHIoyzGg==}
+  '@cloudflare/workers-types@4.20240603.0':
+    resolution: {integrity: sha512-KmsjZcd/dPWM51FoT08cvUGCq9l3nFEriloQ12mcdJPoW911Gi5S/9Cq4xeFvTrtk9TJ2krvxP23IeobecRmOQ==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -2227,8 +2227,8 @@ packages:
     engines: {node: '>=16.13'}
     hasBin: true
 
-  miniflare@3.20240524.0:
-    resolution: {integrity: sha512-RQAfpz7spI6gWlczeUYvJBgGyt0gNR2pYoCydgukCYZ+0bGfJl0yAiNFW62uH7uMZli/4juWPpQOBI5m7URoyA==}
+  miniflare@3.20240524.1:
+    resolution: {integrity: sha512-5d3pRxvd5pT7lX1SsBH9+AjXuyHJnChSNOnYhubfi7pxMek4ZfULwhnUmNUp1R7b2xKuzqdFDZa0fsZuUoFxlw==}
     engines: {node: '>=16.13'}
     hasBin: true
 
@@ -2411,8 +2411,8 @@ packages:
     resolution: {integrity: sha512-7jRGJsexaRIyUzTk8uzXlP45cw6DQ5Ci4bTe0xCBCcuO1Fff8jJy9oI+kRCQKSdDFTSAArMSg8GpvzlKBtSaZA==}
     engines: {node: ^14.15.0 || >=16.0.0}
 
-  prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+  prettier@3.3.0:
+    resolution: {integrity: sha512-J9odKxERhCQ10OC2yb93583f6UnYutOeiV5i0zEDS7UGTdUt0u+y8erxl3lBKvwo/JHyyoEdXjwp4dke9oyZ/g==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2988,8 +2988,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.57.2:
-    resolution: {integrity: sha512-QegYf0FW+4prlFKE9iHr1EGrCo8ejcGL9gaqEXrzQ0vbTdazykYbY0I5UpHFLNq2dIF9I/ifEoLRKr636tyHEw==}
+  wrangler@3.58.0:
+    resolution: {integrity: sha512-h9gWER7LXLnmHABDNP1p3aqXtchlvSBN8Dp22ZurnkxaLMZ3L3H1Ze1ftiFSs0VRWv0BUnz7AWIUqZmzuBY4Nw==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -3102,9 +3102,9 @@ snapshots:
       astro: 4.9.2(@types/node@20.11.30)(typescript@5.4.5)
       lite-youtube-embed: 0.3.2
 
-  '@astrojs/check@0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.2.5)(typescript@5.4.5)':
+  '@astrojs/check@0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.3.0)(typescript@5.4.5)':
     dependencies:
-      '@astrojs/language-server': 2.10.0(prettier-plugin-astro@0.14.0)(prettier@3.2.5)(typescript@5.4.5)
+      '@astrojs/language-server': 2.10.0(prettier-plugin-astro@0.14.0)(prettier@3.3.0)(typescript@5.4.5)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -3117,7 +3117,7 @@ snapshots:
   '@astrojs/cloudflare@9.2.1(astro@4.9.2(@types/node@20.11.30)(typescript@5.4.5))':
     dependencies:
       '@astrojs/underscore-redirects': 0.3.3
-      '@cloudflare/workers-types': 4.20240529.0
+      '@cloudflare/workers-types': 4.20240603.0
       '@iarna/toml': 2.2.5
       astro: 4.9.2(@types/node@20.11.30)(typescript@5.4.5)
       dotenv: 16.4.5
@@ -3136,7 +3136,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.0': {}
 
-  '@astrojs/language-server@2.10.0(prettier-plugin-astro@0.14.0)(prettier@3.2.5)(typescript@5.4.5)':
+  '@astrojs/language-server@2.10.0(prettier-plugin-astro@0.14.0)(prettier@3.3.0)(typescript@5.4.5)':
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -3149,13 +3149,13 @@ snapshots:
       volar-service-css: 0.0.45(@volar/language-service@2.2.4)
       volar-service-emmet: 0.0.45(@volar/language-service@2.2.4)
       volar-service-html: 0.0.45(@volar/language-service@2.2.4)
-      volar-service-prettier: 0.0.45(@volar/language-service@2.2.4)(prettier@3.2.5)
+      volar-service-prettier: 0.0.45(@volar/language-service@2.2.4)(prettier@3.3.0)
       volar-service-typescript: 0.0.45(@volar/language-service@2.2.4)
       volar-service-typescript-twoslash-queries: 0.0.45(@volar/language-service@2.2.4)
       vscode-html-languageservice: 5.2.0
       vscode-uri: 3.0.8
     optionalDependencies:
-      prettier: 3.2.5
+      prettier: 3.3.0
       prettier-plugin-astro: 0.14.0
     transitivePeerDependencies:
       - typescript
@@ -3433,7 +3433,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20240524.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20240529.0': {}
+  '@cloudflare/workers-types@4.20240603.0': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -5598,7 +5598,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  miniflare@3.20240524.0:
+  miniflare@3.20240524.1:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.11.3
@@ -5802,10 +5802,10 @@ snapshots:
   prettier-plugin-astro@0.14.0:
     dependencies:
       '@astrojs/compiler': 1.8.2
-      prettier: 3.2.5
+      prettier: 3.3.0
       sass-formatter: 0.7.9
 
-  prettier@3.2.5: {}
+  prettier@3.3.0: {}
 
   printable-characters@1.0.42: {}
 
@@ -6416,12 +6416,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.2.4
 
-  volar-service-prettier@0.0.45(@volar/language-service@2.2.4)(prettier@3.2.5):
+  volar-service-prettier@0.0.45(@volar/language-service@2.2.4)(prettier@3.3.0):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.2.4
-      prettier: 3.2.5
+      prettier: 3.3.0
 
   volar-service-typescript-twoslash-queries@0.0.45(@volar/language-service@2.2.4):
     optionalDependencies:
@@ -6510,7 +6510,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20240524.0
       '@cloudflare/workerd-windows-64': 1.20240524.0
 
-  wrangler@3.57.2(@cloudflare/workers-types@4.20240529.0):
+  wrangler@3.58.0(@cloudflare/workers-types@4.20240603.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.2
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
@@ -6518,7 +6518,7 @@ snapshots:
       blake3-wasm: 2.1.5
       chokidar: 3.6.0
       esbuild: 0.17.19
-      miniflare: 3.20240524.0
+      miniflare: 3.20240524.1
       nanoid: 3.3.7
       path-to-regexp: 6.2.2
       resolve: 1.22.8
@@ -6527,7 +6527,7 @@ snapshots:
       source-map: 0.6.1
       xxhash-wasm: 1.0.2
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20240529.0
+      '@cloudflare/workers-types': 4.20240603.0
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
