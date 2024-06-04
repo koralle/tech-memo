@@ -1,0 +1,118 @@
+---
+title: NeovimのLua-guideを読んでメモ
+description: NeovimのLua-guideを読んでメモ
+---
+
+import { LinkPreview } from 'astro-embed'
+
+## 困ったら何を見ればいい？
+
+一般的なLua自体の書き方も、Neovim特有のLuaの書き方もNeovimのドキュメントをみよう
+
+<LinkPreview id="https://neovim.io/doc/user/luaref.html#lua-stack" />
+
+<LinkPreview id="https://neovim.io/doc/user/lua-guide.html#lua-guide" />
+
+<LinkPreview id="https://neovim.io/doc/user/lua.html#lua-concepts" />
+
+## Neovimの3つの「API」
+
+NeovimのAPIは、以下の3つのAPIがある
+
+- Vim API
+- Nvim API
+- Lua API
+
+### Vim API
+
+Vim由来のAPI。Luaからは`vim.cmd()`や`vim.fn()`を使ってアクセスできる。
+
+### Nvim API
+
+Neovim由来のAPI。Luaからは`vim.api`で始まる関数を使ってアクセスできる。
+
+### Lua API
+
+Lua由来のAPI。Luaの標準ライブラリを使ってアクセスできる。
+これについて知りたかったら[`lua-stdlib`](https://neovim.io/doc/user/lua.html#lua-stdlib)のドキュメントを見ればいい。
+
+### 例えば...
+
+`colorscheme habamax`はカラースキームを変更するVimのコマンド。
+
+これはNeovimではVim APIとして提供されている。だから、
+
+```lua
+vim.cmd("colorscheme habamax")
+```
+
+または
+
+```lua
+vim.cmd([[colorscheme habamax]])
+```
+
+と書くことで、NeovimのLuaスクリプトからカラースキームを変更できる。
+
+また、VimScriptの関数もLuaから呼び出せる。`vim.fn()`を使えばいい。
+
+```lua
+print(vim.fn.printf("Hello, from %s", "world"))
+```
+
+使用できるVimScriptの関数は`:h builtin-functions`または`:h functions-list`を実行して確認できる。
+
+<LinkPreview id="https://neovim.io/doc/user/builtin.html#builtin-functions" />
+
+<LinkPreview id="https://neovim.io/doc/user/usr_41.html#function-list" />
+
+## 変数
+
+T.B.D
+
+## オプション
+
+以下のVimScriptは
+
+```vim
+set smarttab
+set nosmarttab
+```
+
+Luaではこう書ける。
+
+```lua
+vim.opt.smarttab = true
+vim.opt.smarttab = false
+```
+
+ただし、`:lua print(vim.opt.smarttab)`を実行しても`true/false`は得られない。
+Luaのテーブルのアドレス値だけが得られる。
+
+`true/false`を得るには以下のようにする必要がある。
+
+```lua
+print(vim.opt.smarttab:get())
+```
+
+ただし、もっと簡単な方法がある。
+
+```lua
+vim.o.smarttab = true
+print(vim.o.smarttab)
+--- true
+```
+
+困ったら`:h lua-options`を見よう。
+
+## キーマッピング
+
+T.B.D
+
+## Autocommands
+
+T.B.D
+
+## ユーザーコマンド
+
+T.B.D
