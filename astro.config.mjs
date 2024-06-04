@@ -31,6 +31,12 @@ export default defineConfig({
       lastUpdated: true,
       sidebar: [
         {
+          label: 'Neovim',
+          autogenerate: {
+            directory: 'neovim'
+          }
+        },
+        {
           label: 'React',
           autogenerate: {
             directory: 'react'
