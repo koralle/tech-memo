@@ -37,6 +37,12 @@ export default defineConfig({
           }
         },
         {
+          label: 'UI/UX',
+          autogenerate: {
+            directory: 'uiux'
+          }
+        },
+        {
           label: 'React',
           autogenerate: {
             directory: 'react'
