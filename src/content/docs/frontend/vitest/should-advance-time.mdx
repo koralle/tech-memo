@@ -1,0 +1,64 @@
+---
+title: FakeTimerを使うときのshouldAdvanceTimeオプション
+description: FakeTimerを使うときのshouldAdvanceTimeオプションについてメモ
+---
+
+import { LinkPreview } from 'astro-embed'
+
+## `vi.useFakeTimers()`の`shouldAdvanceTime`オプション
+
+FakeTimerを使うときに`shouldAdvanceTime`オプションを使うことができる。
+
+<LinkPreview id="https://vitest.dev/config/#faketimers-shouldadvancetime" />
+
+正直これがなんなのかはあまりよく分かっていないが、使う場面は一つ分かってる。
+`findBy*`系のクエリを書くときだ。
+
+`beforeEach()`内で`vi.useFakeTimers()`を呼ぶときに`shouldAdvanceTime`を`true`にしないと、`findBy*`系のクエリがタイムアウトする。
+
+```tsx
+// yamada-ui/packages/components/carousel/tests/carousel.test.tsx
+import { Button } from '@yamada-ui/button'
+import { a11y, act, render, screen } from '@yamada-ui/test'
+import type { FC } from 'react'
+import { Carousel, CarouselSlide } from '../src'
+
+const slidesContentArr = new Array(3).fill(0).map((_, id) => `Slide ${id + 1}`)
+
+describe('With Timers', () => {
+  beforeEach(() => {
+    vi.useFakeTimers({ shouldAdvanceTime: true })
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  test('should do not stop autoplay on mouse enter', async () => {
+    const { user } = render(
+      <Carousel delay={500} autoplay stopMouseEnterAutoplay={false}>
+        {slidesContentArr.map((value) => (
+          <CarouselSlide key={value}>{value}</CarouselSlide>
+        ))}
+      </Carousel>
+    )
+
+    const firstSlide = await screen.findByRole('group', { name: /1 of 3/i })
+    await user.click(firstSlide)
+
+    act(() => {
+      vi.advanceTimersByTime(1200)
+    })
+
+    const thirdSlide = await screen.findByRole('group', { name: /3 of 3/i })
+    expect(thirdSlide).toHaveAttribute('data-selected')
+  })
+})
+```
+
+## Sinon.JS
+
+内部でこのライブラリを使っているらしい。
+詳しく知りたいならこれを見れば良さそう。
+
+<LinkPreview id="https://sinonjs.org/releases/latest/fake-timers/" />
