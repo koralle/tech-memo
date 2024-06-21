@@ -31,6 +31,12 @@ export default defineConfig({
       lastUpdated: true,
       sidebar: [
         {
+          label: 'フロントエンド',
+          autogenerate: {
+            directory: 'frontend'
+          }
+        },
+        {
           label: 'Neovim',
           autogenerate: {
             directory: 'neovim'
@@ -40,12 +46,6 @@ export default defineConfig({
           label: 'UI/UX',
           autogenerate: {
             directory: 'uiux'
-          }
-        },
-        {
-          label: 'React',
-          autogenerate: {
-            directory: 'react'
           }
         },
         {
@@ -64,12 +64,6 @@ export default defineConfig({
           label: 'Rust',
           autogenerate: {
             directory: 'rust'
-          }
-        },
-        {
-          label: 'フロントエンド',
-          autogenerate: {
-            directory: 'frontend'
           }
         },
         {
