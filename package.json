@@ -3,7 +3,7 @@
   "name": "tech-memo",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@9.4.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koralle/tech-memo"
@@ -24,21 +24,21 @@
     "@astro-community/astro-embed-link-preview": "^0.2.0",
     "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "^9.2.1",
-    "@astrojs/starlight": "^0.24.2",
-    "astro": "^4.10.2",
+    "@astrojs/starlight": "^0.24.4",
+    "astro": "^4.11.0",
     "astro-embed": "^0.7.2",
     "lite-youtube-embed": "^0.3.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240614.0",
+    "@cloudflare/workers-types": "^4.20240620.0",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "wrangler": "^3.60.3"
+    "wrangler": "^3.61.0"
   },
   "engines": {
-    "node": ">=20.14.0",
-    "pnpm": ">=9.3.0",
+    "node": ">=20.15.0",
+    "pnpm": ">=9.4.0",
     "npm": "please use pnpm!",
     "yarn": "please use pnpm!"
   }
