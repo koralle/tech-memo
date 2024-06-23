@@ -8,7 +8,7 @@ export default defineConfig({
   output: 'server',
   vite: {
     ssr: {
-      external: ['node:url', 'node:path', 'node:child_process', 'node:fs']
+      external: ['node:url', 'node:path', 'node:child_process', 'node:fs', 'perf_hooks']
     }
   },
   adapter: cloudflare({
