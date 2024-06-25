@@ -32,7 +32,65 @@ import { Aside } from '@astrojs/starlight/components'
 
 ### 12. createContext
 
+React標準の`React.createContext`を拡張して使いやすくしたもの、と考えるとわかりやすい。
+
+```ts
+// packages/utils/src/react.tsx
+type Options<ContextType extends any = any> = {
+  strict?: boolean
+  errorMessage?: string
+  name?: string
+  defaultValue?: ContextType
+}
+
+type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>]
+
+export const createContext = <ContextType extends any = any>({
+  strict = true,
+  errorMessage = 'useContext: `context` is undefined. Seems you forgot to wrap component within the Provider',
+  name,
+  defaultValue
+}: Options<ContextType> = {}) => {
+  const Context = React.createContext<ContextType | undefined>(defaultValue)
+
+  Context.displayName = name
+
+  const useContext = () => {
+    const context = React.useContext(Context)
+
+    if (!context && strict) {
+      const error = new Error(errorMessage)
+      error.name = 'ContextError'
+      Error.captureStackTrace?.(error, useContext)
+      throw error
+    }
+
+    return context
+  }
+
+  return [
+    Context.Provider,
+    useContext,
+    Context
+  ] as CreateContextReturn<ContextType>
+}
+```
+
 ### 13. useSafeLayoutEffect
+
+SSR環境や`document`オブジェクトが存在しない環境において`useLayoutEffect`を`useEffect`にフォールバックしてくれるフック。
+
+```ts
+export const useSafeLayoutEffect = Boolean(globalThis?.document)
+  ? React.useLayoutEffect
+  : React.useEffect
+```
+
+<Aside>
+`useLayoutEffect`の詳しい解説はReactのドキュメントを読もう
+
+<LinkPreview id='https://ja.react.dev/reference/react/useLayoutEffect' />
+</Aside>
 
 ### 14. useUnmountEffect
 
@@ -278,11 +336,83 @@ export const isRefObject = (val: any): val is { current: any } =>
 
 ### 24. assignRef
 
+Reactのrefを安全に設定できる関数。
+
+```ts
+export const assignRef = <T extends any = any>(
+  ref: ReactRef<T> | undefined,
+  value: T
+) => {
+  if (ref == null) return
+
+  if (typeof ref === 'function') {
+    ref(value)
+
+    return
+  }
+
+  try {
+    // @ts-ignore
+    ref.current = value
+  } catch (error) {
+    throw new Error(`Cannot assign value '${value}' to ref '${ref}'`)
+  }
+}
+```
+
 ### 25. mergeRefs
 
 ### 26. useMergeRefs
 
 ### 27. useCallbackRef
+
+簡単に言えば、`useCallback`フックを拡張してパフォーマンスを向上させたもの。  
+再レンダリング時にコールバック関数の新しい参照を持つようにするのではなく、あくまで既に保持している参照を更新するようにすることでパフォーマンスを向上させている。
+
+```ts
+// packages/utils/src/react.tsx
+export const useCallbackRef = <T extends (...args: any[]) => any>(
+  callback: T | undefined,
+  deps: React.DependencyList = []
+) => {
+  const callbackRef = React.useRef(callback)
+
+  React.useEffect(() => {
+    callbackRef.current = callback
+  })
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return React.useCallback(
+    ((...args) => callbackRef.current?.(...args)) as T,
+    deps
+  )
+}
+```
+
+### 細かく分割しながら処理を見ていく
+
+`useRef`フックを使ってコールバック関数への参照を保持するRefObjectを作成する。
+
+```ts
+const callbackRef = React.useRef(callback)
+```
+
+再レンダリング時は、そのRefObjectを更新することで同じ参照を使い回す。
+
+```ts
+React.useEffect(() => {
+  callbackRef.current = callback
+})
+```
+
+最終的な返り値は下のコードブロックを見て分かる通り、`useCallback`の返り値と同じ。
+
+```ts
+return React.useCallback(
+  ((...args) => callbackRef.current?.(...args)) as T,
+  deps
+)
+```
 
 ### 28. useUpdateEffect
 
