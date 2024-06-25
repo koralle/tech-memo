@@ -1,0 +1,216 @@
+---
+title: ReactElementとReactNodeの違い
+description: ReactElementとReactNodeの違いについて理解しておきたい。
+---
+
+import { LinkPreview } from 'astro-embed'
+import { Aside } from '@astrojs/starlight/components'
+
+## `JSX.IntrinsicElements`
+
+まず、本題に入る前に`JSX.IntrinsicElements`について抑えておく。
+
+しかしこれについて理解するには、ReactではなくTypeScriptのドキュメントを読む必要がある。  
+要はJSXやTypeScriptがJSXをどう扱うかを知らないといけない。
+
+<LinkPreview id="https://www.typescriptlang.org/docs/handbook/jsx.html" />
+
+まず、JSX式`<expr />`で作られる要素には2つの場合が存在する。
+
+- `intrinsic elements`
+- `value-based elements`
+
+### intrinsic elements
+
+これは`<html>`や`<div>`などの組み込み要素のこと...と言い切ってしまうのは少々乱暴。  
+厳密に言うなら、「TypeScriptが組み込み要素として認識する要素」のことを指していると考えられる。
+
+なぜなら、HTMLの仕様書で定義されていないような非組み込み要素であっても、以下のようにして組み込み要素であるかのようにTypeScriptに認識させることができるからだ。
+
+```ts
+declare namespace JSX {
+    interface IntrinsicElements {
+        foo: {
+            hoge: string;
+            fuga: number;
+        }
+    }
+}
+
+const elm = <foo hoge="文字列" fuga={123} />; // OK
+const elm2 = <foo hoge={123} fuga={456} />; // エラー: hogeはstring型でなければならない
+const elm3 = <bar />; // エラー: barという要素は定義されていない
+```
+
+この例では、TypeScriptは`foo`という要素が組み込み要素であると認識している。
+
+視点を変えれば、TypeScriptは`JSX.IntrinsicElements`という型を調べて、`<expr />`が組み込み要素であるかを判断していると考えられる。
+
+という前提で`@types/react`に書かれている`JSX.IntrinsicElements`の型定義を見てみると「なるほど！」となる。
+
+<LinkPreview id="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts" />
+
+### value-based elements
+
+こちらに関しては、先述のintrinsic elementsの説明における表現を借りれば、「ユーザーが定義した要素であるとTypeScriptが認識した要素」を指す。
+
+## `React.ReactNode`と`React.ReactElement`
+
+この前提をおさえて本題に入る。
+
+`React.ReactNode`と`React.ReactElement`はそれぞれどういう概念なのだろう？
+
+Reactのドキュメントによると、まず`React.ReactNode`は以下のように定義されている。
+
+> - <div /> や createElement('div') のようにして作成された React 要素
+> - createPortal で作成されたポータル
+> - 文字列
+> - 数値
+> - true, false, null, undefined（これらは表示されません）
+> - 他の React ノードの配列
+
+<LinkPreview id="https://ja.react.dev/reference/react/isValidElement" />
+
+定義が分かったところで`React.ReactNode`型は何を表現する集合なのだろう？  
+その答えは型定義に書いていた。
+
+````ts
+// types/react/index.d.ts
+/**
+ * Represents a JSX element.
+ *
+ * Where {@link ReactNode} represents everything that can be rendered, `ReactElement`
+ * only represents JSX.
+ *
+ * @template P The type of the props object
+ * @template T The type of the component or tag
+ *
+ * @example
+ *
+ * ```tsx
+ * const element: ReactElement = <div />;
+ * ```
+ */
+interface ReactElement<
+  P = any,
+  T extends string | JSXElementConstructor<any> =
+    | string
+    | JSXElementConstructor<any>
+> {
+  type: T
+  props: P
+  key: string | null
+}
+
+// ...
+
+/**
+ * Represents all of the things React can render.
+ *
+ * Where {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.
+ *
+ * @see {@link https://react-typescript-cheatsheet.netlify.app/docs/react-types/reactnode/ React TypeScript Cheatsheet}
+ * ...
+ */
+// non-thenables need to be kept in sync with AwaitedReactNode
+type ReactNode =
+  | ReactElement
+  | string
+  | number
+  | Iterable<ReactNode>
+  | ReactPortal
+  | boolean
+  | null
+  | undefined
+  | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES]
+````
+
+これらの型定義によると以下のことがわかる。
+
+- `React.ReactElement`はJSXで表現される要素の集合である。
+- `React.ReactNode`はReactがレンダーできる物の集合である。
+- `React.ReactElement`は`React.ReactNode`の部分集合である。
+
+<Aside type="tip">
+
+`JSXElementConstructor`型は以下のように定義されており、このJSDocを読む限り先述のvalue-based elementsを表現していると考えられる。
+
+```ts
+/**
+ * Represents any user-defined component, either as a function or a class.
+ *
+ * Similar to {@link ComponentType}, but without extra properties like
+ * {@link FunctionComponent.defaultProps defaultProps } and
+ * {@link ComponentClass.contextTypes contextTypes}.
+ *
+ * @template P The props the component accepts.
+ */
+type JSXElementConstructor<P> =
+  | ((
+      props: P,
+      /**
+       * @deprecated
+       *
+       * @see {@link https://legacy.reactjs.org/docs/legacy-context.html#referencing-context-in-stateless-function-components React Docs}
+       */
+      deprecatedLegacyContext?: any
+    ) => ReactNode)
+  | (new (
+      props: P,
+      /**
+       * @deprecated
+       *
+       * @see {@link https://legacy.reactjs.org/docs/legacy-context.html#referencing-context-in-lifecycle-methods React Docs}
+       */
+      deprecatedLegacyContext?: any
+    ) => Component<any, any>)
+```
+
+</Aside>
+
+`React.ReactNode`についてはある程度理解できた。  
+一方で`React.ReactElement`はまだしっくり来てない。
+
+`React.ReactElement`って一体なんなのか？それを理解するためには、どうやら同時に`JSX.Element`についても理解する必要があるらしい。
+
+まず、`JSX.Element`の型定義を見る。
+
+```ts
+// types/react/index.d.ts
+declare global {
+  /**
+   * @deprecated Use `React.JSX` instead of the global `JSX` namespace.
+   */
+  namespace JSX {
+    // ...
+    interface Element extends React.ReactElement<any, any> {}
+    // ...
+  }
+}
+```
+
+つまり、`JSX.Element`は`React.ReactElement`のサブタイプであることがわかる。
+
+ここで、冒頭のTypeScriptのドキュメントのJSXのページに戻るとこんな事が書いてある。
+
+> Function Component
+> As the name suggests, the component is defined as a JavaScript function where its first argument is a props object. TS enforces that its return type must be assignable to JSX.Element.
+
+つまり、`JSX.Element`という型は関数コンポーネントの戻り値を表現する型であることが分かる。
+
+また、`React.createElement()`の型定義も見てみる。返り値が`React.ReactElement`型であることがわかる。
+
+```ts
+// types/react/index.d.ts
+function createElement<P extends {}>(
+  type: FunctionComponent<P> | ComponentClass<P> | string,
+  props?: (Attributes & P) | null,
+  ...children: ReactNode[]
+): ReactElement<P>
+```
+
+うーん...今度は`JSX.Element`については分かったけど、`React.ReactElement`についてはまだしっくり来てない。
+
+## 参考
+
+<LinkPreview id="https://zenn.dev/msy/articles/e21e729eb0727d" />
