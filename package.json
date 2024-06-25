@@ -23,9 +23,9 @@
   "dependencies": {
     "@astro-community/astro-embed-link-preview": "^0.2.0",
     "@astrojs/check": "^0.7.0",
-    "@astrojs/cloudflare": "^11.0.0",
+    "@astrojs/cloudflare": "^11.0.1",
     "@astrojs/starlight": "^0.24.4",
-    "astro": "^4.11.0",
+    "astro": "^4.11.1",
     "astro-embed": "^0.7.2",
     "lite-youtube-embed": "^0.3.2",
     "typescript": "^5.5.2"
@@ -34,7 +34,7 @@
     "@cloudflare/workers-types": "^4.20240620.0",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "wrangler": "^3.61.0"
+    "wrangler": "^3.62.0"
   },
   "engines": {
     "node": ">=20.15.0",
