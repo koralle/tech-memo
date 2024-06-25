@@ -1,0 +1,386 @@
+---
+title: Yamada UIで頻出のユーティリティを見ていく
+description: Yamada UIで頻出のユーティリティを色々見てメモる
+---
+
+import { LinkPreview } from 'astro-embed'
+import { Aside } from '@astrojs/starlight/components'
+
+### `/packages/utils/src/react.tsx`
+
+### 1. DOMAttributes
+
+### 2. PropGetter
+
+### 3. RequiredPropGetter
+
+### 4. MaybeRenderProp
+
+### 5. UseIsMountedProps
+
+### 6. UseIsMountedReturn
+
+### 7. FunctionReturningPromise
+
+### 8. AsyncState
+
+### 9. PromiseType
+
+### 10. AsyncFnReturn
+
+### 11. AsyncStateRetry
+
+### 12. createContext
+
+### 13. useSafeLayoutEffect
+
+### 14. useUnmountEffect
+
+コンポーネントがアンマウントされた時に、特定のコールバック関数を実行するためのフック。
+
+```ts
+export const useUnmountEffect = (callback: () => void) =>
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => () => callback(), [])
+```
+
+<Aside type='tip'>
+  `useEffect`フックの以下の性質を利用している。
+  * `useEffect`のコールバック関数はクリーンアップ関数を返す。
+  * クリーンアップ関数は、コンポーネントがアンマウントされた時に実行される。
+
+  <LinkPreview id="https://ja.react.dev/reference/react/useEffect" />
+</Aside>
+
+### 15. useIsMounted
+
+### 16. getValidChildren
+
+引数に渡したReactコンポーネントの子要素のうち、「有効な」子要素のみを抽出する関数。
+
+```tsx
+export const getValidChildren = (
+  children: React.ReactNode
+): React.ReactElement[] =>
+  React.Children.toArray(children).filter((child) =>
+    React.isValidElement(child)
+  ) as React.ReactElement[]
+```
+
+### 「有効な」ってどういう意味？
+
+ただ、先述の説明だけじゃこれだけじゃ何にもわからない。ちゃんとReactのドキュメントを読む。
+
+<LinkPreview id="https://ja.react.dev/reference/react/isValidElement" />
+
+このページを見る限り、`React.isValidElement()`関数についてこう書かれている。
+
+> isValidElement は値が React 要素 (React element) であるかどうかを判定します。
+
+なるほど、React的には「React element」であることが「有効」であるようだ。  
+では、「React要素」の具体的な定義はなんだろう？
+
+もうちょっとこのページを読み進めると、こんな事が書いてある。
+
+> React 要素と見なされるのは、JSX タグと、createElement によって返されるオブジェクトだけです。例えば、42 のような数値は有効な React ノード (node) ではあります（コンポーネントから返すことができるため）が、有効な React 要素ではありません。配列や、createPortal で作成されたポータルも、React 要素とは見なされません。
+
+なるほど、つまり「React要素」であるためには以下のいずれかの条件を満たしていなければならないらしい。
+
+1. JSXタグである（`<span>koralle</span>`や`<MyComponent />`みたいな）
+2. `createElement`関数で返されるオブジェクトである。
+
+この関数が必要になるケースについても言及されていた。
+
+> isValidElement が必要となることは非常に稀です。これが主に役立つのは、要素のみを受け入れる他の API（例えば cloneElement がそうです）を呼び出しており、引数が React 要素でないことによるエラーを避けたい場合です。
+
+### 17. isValidElement
+
+画面に表示される要素であるかどうかを判定する関数。  
+これは`React.isValidElement()`関数を拡張して作られている。
+
+```ts
+export const isValidElement = (child: any): child is React.ReactNode =>
+  React.isValidElement(child) || isString(child) || isNumber(child)
+```
+
+### 18. findChildren
+
+子要素の中から指定した型の子要素を探して抽出する関数。
+
+```ts
+export const findChildren = (
+  children: React.ReactElement<
+    any,
+    string | React.JSXElementConstructor<any>
+  >[],
+  ...types: (string | React.JSXElementConstructor<any>)[]
+): [React.ReactElement | undefined, ...React.ReactElement[]] =>
+  (children.find((child) => types.some((type) => child.type === type))
+    ? children.sort((a, b) =>
+        types.some((type) => a.type === type)
+          ? -1
+          : types.some((type) => b.type === type)
+            ? 1
+            : 0
+      )
+    : [undefined, ...children]) as [
+    React.ReactElement | undefined,
+    ...React.ReactElement[]
+  ]
+```
+
+このテストコードのように、指定した型の子要素の中で最初に見つかった子要素をタプルの第一要素に持ってきて、その他の子要素をタプルの残りの要素に持ってくる。
+
+```tsx
+// packages/utils/tests/react.test.tsx
+describe('findChildren', () => {
+  test('should find children of specified types', () => {
+    const children = [
+      <div key="1">Div</div>,
+      <span key="2">Span</span>,
+      <section key="3">Section</section>
+    ]
+    const [foundChild, ...rest] = findChildren(children, 'span')
+    expect(foundChild?.type).toBe('span')
+    expect(rest).toHaveLength(2)
+  })
+})
+```
+
+### 19. includesChildren
+
+指定した型の子要素を含むかどうかを判定する関数。
+
+```ts
+export const includesChildren = (
+  children: React.ReactElement<
+    any,
+    string | React.JSXElementConstructor<any>
+  >[],
+  ...types: (string | React.JSXElementConstructor<any>)[]
+): boolean =>
+  children.some((child) => {
+    if (types.some((type) => child.type === type)) return true
+
+    const children = getValidChildren(child.props.children)
+
+    return children.length ? includesChildren(children, ...types) : false
+  })
+```
+
+使い方はこんな感じ
+
+```tsx
+// packages/utils/tests/react.test.tsx
+describe('includesChildren', () => {
+  test('should return true if children include specified types', () => {
+    const children = [
+      <div key="1">
+        <span>Inside Div</span>
+      </div>,
+      <section key="2">Section</section>
+    ]
+    expect(includesChildren(children, 'span')).toBeTruthy()
+  })
+
+  test('should return false if children do not include specified types', () => {
+    const children = [
+      <div key="1">Div</div>,
+      <section key="2">Section</section>
+    ]
+    expect(includesChildren(children, 'span')).toBeFalsy()
+  })
+})
+```
+
+### 20. omitChildren
+
+指定した型の子要素を排除する関数。
+
+```ts
+export const omitChildren = (
+  children: React.ReactElement<
+    any,
+    string | React.JSXElementConstructor<any>
+  >[],
+  ...types: (string | React.JSXElementConstructor<any>)[]
+): React.ReactElement[] =>
+  children.filter((child) => types.every((type) => child.type !== type))
+```
+
+使い方。
+
+```tsx
+describe('omitChildren', () => {
+  test('should omit children of specified types', () => {
+    const children = [
+      <div key="1">Div</div>,
+      <span key="2">Span</span>,
+      <section key="3">Section</section>
+    ]
+    const omittedChildren = omitChildren(children, 'span')
+    expect(omittedChildren).toHaveLength(2)
+    expect(omittedChildren.some((child) => child.type === 'span')).toBeFalsy()
+  })
+})
+```
+
+### 21. pickChildren
+
+子要素の中から指定した型の子要素だけを抽出する関数。  
+条件を満たす最初の子要素を1つだけ抽出する`findChildren`とは異なり、こちらは条件を満たす子要素をすべて抽出する。
+
+```ts
+export const pickChildren = (
+  children: React.ReactElement<
+    any,
+    string | React.JSXElementConstructor<any>
+  >[],
+  ...types: (string | React.JSXElementConstructor<any>)[]
+): React.ReactElement[] =>
+```
+
+### 22. cx
+
+配列形式で渡したクラス名を半角スペース区切りで結合して1つの文字列にする関数。
+
+```ts
+// packages/utils/src/react.tsx
+export const cx = (...classNames: (string | undefined)[]) =>
+  classNames.filter(Boolean).join(' ')
+```
+
+使い方。
+
+```tsx
+// packages/utils/tests/react.test.tsx
+describe('cx', () => {
+  test('should concatenate class names', () => {
+    const classNames = cx('class1', undefined, 'class2')
+    expect(classNames).toBe('class1 class2')
+  })
+})
+```
+
+### 23. isRefObject
+
+ReactのRefオブジェクトかどうかを判定する関数。
+
+```ts
+export const isRefObject = (val: any): val is { current: any } =>
+  isObject(val) && 'current' in val
+```
+
+<Aside type="tip">
+  このページは確認しておこう。
+  <LinkPreview id="https://ja.react.dev/learn/referencing-values-with-refs#how-does-use-ref-work-inside" />
+</Aside>
+
+### 24. assignRef
+
+### 25. mergeRefs
+
+### 26. useMergeRefs
+
+### 27. useCallbackRef
+
+### 28. useUpdateEffect
+
+初回レンダー時には実行されないが、依存配列が更新された時にのみコールバック関数を実行されるような副作用を定義するのに使用するフック。
+
+```tsx
+// packages/utils/src/react.tsx
+export const useUpdateEffect = (
+  callback: React.EffectCallback,
+  deps: React.DependencyList
+) => {
+  const renderCycleRef = React.useRef(false)
+  const effectCycleRef = React.useRef(false)
+
+  React.useEffect(() => {
+    const mounted = renderCycleRef.current
+    const run = mounted && effectCycleRef.current
+
+    if (run) return callback()
+
+    effectCycleRef.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps)
+
+  React.useEffect(() => {
+    renderCycleRef.current = true
+
+    return () => {
+      renderCycleRef.current = false
+    }
+  }, [])
+}
+```
+
+流れとしてはこんな感じ。
+
+まず、`renderCycleRef`と`effectCycleRef`という2つのRefオブジェクトを作成する。  
+これらのRefオブジェクトで管理するboolean値を`true`にするタイミングを上手く制御するのがキモ。
+
+```ts
+const renderCycleRef = React.useRef(false)
+const effectCycleRef = React.useRef(false)
+```
+
+次に最初の`useEffect`。
+
+```tsx
+React.useEffect(() => {
+  const mounted = renderCycleRef.current
+  const run = mounted && effectCycleRef.current
+
+  if (run) return callback()
+
+  effectCycleRef.current = true
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, deps)
+```
+
+このような`useEffect`を定義することで、初回レンダー時の副作用の実行をスマートにスキップできる。
+
+次に、2つ目の`useEffect`。このようにすることで2回目以降のレンダー時に副作用が更新されるようにしつつ、且つアンマウントされた場合には副作用が実行されないようにしている。
+
+```ts
+React.useEffect(() => {
+  renderCycleRef.current = true
+
+  return () => {
+    renderCycleRef.current = false
+  }
+}, [])
+```
+
+使い方はこんな感じ。
+
+```tsx
+import React, { useState } from 'react'
+import { useUpdateEffect } from '@yamada-ui/utils'
+
+const MyComponent = () => {
+  const [count, setCount] = useState(0)
+
+  useUpdateEffect(() => {
+    console.log('Count has been updated:', count)
+  }, [count])
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  )
+}
+```
+
+### 29. useAsync
+
+### 30. useAsyncFunc
+
+### 31. useAsyncRetry
+
+### 32. createId
