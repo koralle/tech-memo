@@ -16,16 +16,16 @@ importers:
         version: 0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.5.2)
       '@astrojs/cloudflare':
         specifier: ^11.0.1
-        version: 11.0.1(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+        version: 11.0.1(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       '@astrojs/starlight':
-        specifier: ^0.24.4
-        version: 0.24.4(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+        specifier: ^0.24.5
+        version: 0.24.5(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       astro:
-        specifier: ^4.11.1
-        version: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+        specifier: ^4.11.3
+        version: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
       astro-embed:
         specifier: ^0.7.2
-        version: 0.7.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+        version: 0.7.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       lite-youtube-embed:
         specifier: ^0.3.2
         version: 0.3.2
@@ -135,8 +135,8 @@ packages:
   '@astrojs/sitemap@3.1.5':
     resolution: {integrity: sha512-GLdzJ01387Uzb8RKYpsYLlg/GzoPnGbmDeQNkarSE11i2+l9Qp8Nj/WoTEy9nkTS25fxxy0kxDfJmreeVleCqg==}
 
-  '@astrojs/starlight@0.24.4':
-    resolution: {integrity: sha512-rED8LPQwsXlgclfdHO+okUGcirof1prrxZLuKWp380xC/T7u2qQ5b1gnKqpM+92x+vhs8GYT7mHGKz9VctwdUg==}
+  '@astrojs/starlight@0.24.5':
+    resolution: {integrity: sha512-DDI8NpLzk+ReBudhAV09OhO5DxD+KN4Nnp3YlG6kwn/F8fmywNTNgY7VW67Z8aad+A/85OOiQOtq9wIFNRy3YA==}
     peerDependencies:
       astro: ^4.8.6
 
@@ -1032,9 +1032,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shikijs/core@1.7.0':
-    resolution: {integrity: sha512-O6j27b7dGmJbR3mjwh/aHH8Ld+GQvA0OQsNO43wKWnqbAae3AYXrhFyScHGX8hXZD6vX2ngjzDFkZY5srtIJbQ==}
-
   '@shikijs/core@1.9.1':
     resolution: {integrity: sha512-EmUful2MQtY8KgCF1OkBtOuMcvaZEvmdubhW0UHCGXi21O9dRLeADVCj+k6ZS+de7Mz9d2qixOXJ+GLhcK3pXg==}
 
@@ -1148,11 +1145,6 @@ packages:
     resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
     engines: {node: '>=0.4.0'}
 
-  acorn@8.11.3:
-    resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-
   acorn@8.12.0:
     resolution: {integrity: sha512-RTvkC4w+KNXrM39/lWCUaG0IbRkWdCv7W/IOW9oU6SawyxulvkQy5HQPVTKxEjczcUvapcrw3cFx/60VN/NRNw==}
     engines: {node: '>=0.4.0'}
@@ -1223,8 +1215,8 @@ packages:
     peerDependencies:
       astro: ^4.0.0-beta || ^3.3.0
 
-  astro@4.11.1:
-    resolution: {integrity: sha512-6e9/9nafmnxzaLSq2+9VNpi+7j0E4UoK2IJ7gkhyv1wk3XfciA6zHc3ESx7/Sk/rjenz9NSTTzAwcmVzWWHv/g==}
+  astro@4.11.3:
+    resolution: {integrity: sha512-SuZbB/71XVn+WqWNCe7XOfHuqhS+k4gj8+A3wluTZQrORGaHUFRn/f8F9Tu5yESQZB1q8UKhahvHwkTV3AdVsg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1485,9 +1477,6 @@ packages:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
 
-  es-module-lexer@1.5.3:
-    resolution: {integrity: sha512-i1gCgmR9dCl6Vil6UKPI/trA69s08g/syhiDK9TG0Nf1RJjjFI+AzoWW7sPufzkgYAn861skuCwJa0pIIHYxvg==}
-
   es-module-lexer@1.5.4:
     resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
 
@@ -1732,9 +1721,6 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
-
-  import-meta-resolve@4.0.0:
-    resolution: {integrity: sha512-okYUR7ZQPH+efeuMJGlq4f8ubUgO50kByRPyt/Cy1Io4PSRsPjxME+YlVaCOx+NIToW7hCsZNFJyTPFFKepRSA==}
 
   import-meta-resolve@4.1.0:
     resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
@@ -2453,9 +2439,6 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.7.0:
-    resolution: {integrity: sha512-H5pMn4JA7ayx8H0qOz1k2qANq6mZVCMl1gKLK6kWIrv1s2Ial4EmD4s4jE8QB5Dw03d/oCQUxc24sotuyR5byA==}
-
   shiki@1.9.1:
     resolution: {integrity: sha512-8PDkgb5ja3nfujTjvC4VytL6wGOGCtFAClUb2r3QROevYXxcq+/shVJK5s6gy0HZnjaJgFxd6BpPqpRfqne5rA==}
 
@@ -2631,9 +2614,6 @@ packages:
 
   unified@10.1.2:
     resolution: {integrity: sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==}
-
-  unified@11.0.4:
-    resolution: {integrity: sha512-apMPnyLjAX+ty4OrNap7yumyVAMlKx5IWU2wlzzUdYJO9A8f1p9m/gywF/GM2ZDFcjQPrx59Mc90KwmxsoklxQ==}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -2943,38 +2923,38 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astro-community/astro-embed-integration@0.7.1(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astro-community/astro-embed-integration@0.7.1(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
       '@astro-community/astro-embed-link-preview': 0.2.0
-      '@astro-community/astro-embed-twitter': 0.5.4(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
-      '@astro-community/astro-embed-vimeo': 0.3.7(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
-      '@astro-community/astro-embed-youtube': 0.5.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+      '@astro-community/astro-embed-twitter': 0.5.4(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
+      '@astro-community/astro-embed-vimeo': 0.3.7(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
+      '@astro-community/astro-embed-youtube': 0.5.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       '@types/unist': 2.0.10
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
-      astro-auto-import: 0.4.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
+      astro-auto-import: 0.4.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       unist-util-select: 4.0.3
 
   '@astro-community/astro-embed-link-preview@0.2.0':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.2
 
-  '@astro-community/astro-embed-twitter@0.5.4(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astro-community/astro-embed-twitter@0.5.4(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.2
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
 
   '@astro-community/astro-embed-utils@0.1.2':
     dependencies:
       linkedom: 0.14.26
 
-  '@astro-community/astro-embed-vimeo@0.3.7(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astro-community/astro-embed-vimeo@0.3.7(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
       '@astro-community/astro-embed-utils': 0.1.2
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
 
-  '@astro-community/astro-embed-youtube@0.5.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astro-community/astro-embed-youtube@0.5.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
       lite-youtube-embed: 0.3.2
 
   '@astrojs/check@0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.5.2)':
@@ -2989,12 +2969,12 @@ snapshots:
       - prettier
       - prettier-plugin-astro
 
-  '@astrojs/cloudflare@11.0.1(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astrojs/cloudflare@11.0.1(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
       '@astrojs/internal-helpers': 0.3.0
       '@astrojs/underscore-redirects': 0.3.3
       '@cloudflare/workers-types': 4.20240620.0
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
       esbuild: 0.19.12
       estree-walker: 3.0.3
       magic-string: 0.30.10
@@ -3046,7 +3026,7 @@ snapshots:
       github-slugger: 2.0.0
       hast-util-from-html: 2.0.1
       hast-util-to-text: 4.0.2
-      import-meta-resolve: 4.0.0
+      import-meta-resolve: 4.1.0
       mdast-util-definitions: 6.0.0
       rehype-raw: 7.0.0
       rehype-stringify: 10.0.0
@@ -3054,8 +3034,8 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.0
       remark-smartypants: 2.1.0
-      shiki: 1.7.0
-      unified: 11.0.4
+      shiki: 1.9.1
+      unified: 11.0.5
       unist-util-remove-position: 5.0.0
       unist-util-visit: 5.0.0
       unist-util-visit-parents: 6.0.1
@@ -3086,13 +3066,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.0(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astrojs/mdx@3.1.0(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
       '@astrojs/markdown-remark': 5.1.0
       '@mdx-js/mdx': 3.0.1
-      acorn: 8.11.3
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
-      es-module-lexer: 1.5.3
+      acorn: 8.12.0
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
+      es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
       gray-matter: 4.0.3
@@ -3117,15 +3097,15 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/starlight@0.24.4(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))':
+  '@astrojs/starlight@0.24.5(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))':
     dependencies:
-      '@astrojs/mdx': 3.1.0(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+      '@astrojs/mdx': 3.1.0(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       '@astrojs/sitemap': 3.1.5
       '@pagefind/default-ui': 1.0.4
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.4
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
-      astro-expressive-code: 0.35.3(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
+      astro-expressive-code: 0.35.3(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.1
       hast-util-select: 6.0.2
@@ -3137,7 +3117,7 @@ snapshots:
       rehype: 13.0.1
       rehype-format: 5.0.0
       remark-directive: 3.0.0
-      unified: 11.0.4
+      unified: 11.0.5
       unist-util-visit: 5.0.0
       vfile: 6.0.1
     transitivePeerDependencies:
@@ -3615,7 +3595,7 @@ snapshots:
   '@expressive-code/plugin-shiki@0.35.3':
     dependencies:
       '@expressive-code/core': 0.35.3
-      shiki: 1.7.0
+      shiki: 1.9.1
 
   '@expressive-code/plugin-text-markers@0.35.3':
     dependencies:
@@ -3747,7 +3727,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.0
       source-map: 0.7.4
-      unified: 11.0.4
+      unified: 11.0.5
       unist-util-position-from-estree: 2.0.0
       unist-util-stringify-position: 4.0.0
       unist-util-visit: 5.0.0
@@ -3822,8 +3802,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.13.0':
     optional: true
-
-  '@shikijs/core@1.7.0': {}
 
   '@shikijs/core@1.9.1': {}
 
@@ -3974,8 +3952,6 @@ snapshots:
 
   acorn-walk@8.3.2: {}
 
-  acorn@8.11.3: {}
-
   acorn@8.12.0: {}
 
   ansi-align@3.0.1:
@@ -4021,27 +3997,27 @@ snapshots:
 
   astring@1.8.6: {}
 
-  astro-auto-import@0.4.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2)):
+  astro-auto-import@0.4.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2)):
     dependencies:
       '@types/node': 18.19.31
       acorn: 8.12.0
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
 
-  astro-embed@0.7.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2)):
+  astro-embed@0.7.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2)):
     dependencies:
-      '@astro-community/astro-embed-integration': 0.7.1(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
+      '@astro-community/astro-embed-integration': 0.7.1(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
       '@astro-community/astro-embed-link-preview': 0.2.0
-      '@astro-community/astro-embed-twitter': 0.5.4(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
-      '@astro-community/astro-embed-vimeo': 0.3.7(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
-      '@astro-community/astro-embed-youtube': 0.5.2(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2))
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      '@astro-community/astro-embed-twitter': 0.5.4(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
+      '@astro-community/astro-embed-vimeo': 0.3.7(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
+      '@astro-community/astro-embed-youtube': 0.5.2(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2))
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
 
-  astro-expressive-code@0.35.3(astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2)):
+  astro-expressive-code@0.35.3(astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2)):
     dependencies:
-      astro: 4.11.1(@types/node@20.11.30)(typescript@5.5.2)
+      astro: 4.11.3(@types/node@20.11.30)(typescript@5.5.2)
       rehype-expressive-code: 0.35.3
 
-  astro@4.11.1(@types/node@20.11.30)(typescript@5.5.2):
+  astro@4.11.3(@types/node@20.11.30)(typescript@5.5.2):
     dependencies:
       '@astrojs/compiler': 2.8.1
       '@astrojs/internal-helpers': 0.4.1
@@ -4092,7 +4068,6 @@ snapshots:
       preferred-pm: 3.1.3
       prompts: 2.4.2
       rehype: 13.0.1
-      resolve: 1.22.8
       semver: 7.6.2
       shiki: 1.9.1
       string-width: 7.1.0
@@ -4355,8 +4330,6 @@ snapshots:
   emoji-regex@9.2.2: {}
 
   entities@4.5.0: {}
-
-  es-module-lexer@1.5.3: {}
 
   es-module-lexer@1.5.4: {}
 
@@ -4783,8 +4756,6 @@ snapshots:
   http-cache-semantics@4.1.1: {}
 
   human-signals@5.0.0: {}
-
-  import-meta-resolve@4.0.0: {}
 
   import-meta-resolve@4.1.0: {}
 
@@ -5662,7 +5633,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-from-html: 2.0.1
-      unified: 11.0.4
+      unified: 11.0.5
 
   rehype-raw@7.0.0:
     dependencies:
@@ -5674,21 +5645,21 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.1
-      unified: 11.0.4
+      unified: 11.0.5
 
   rehype@13.0.1:
     dependencies:
       '@types/hast': 3.0.4
       rehype-parse: 9.0.0
       rehype-stringify: 10.0.0
-      unified: 11.0.4
+      unified: 11.0.5
 
   remark-directive@3.0.0:
     dependencies:
       '@types/mdast': 4.0.4
       mdast-util-directive: 3.0.0
       micromark-extension-directive: 3.0.0
-      unified: 11.0.4
+      unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
@@ -5699,7 +5670,7 @@ snapshots:
       micromark-extension-gfm: 3.0.0
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
-      unified: 11.0.4
+      unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
@@ -5737,14 +5708,14 @@ snapshots:
     dependencies:
       retext: 9.0.0
       retext-smartypants: 6.1.0
-      unified: 11.0.4
+      unified: 11.0.5
       unist-util-visit: 5.0.0
 
   remark-stringify@11.0.0:
     dependencies:
       '@types/mdast': 4.0.4
       mdast-util-to-markdown: 2.1.0
-      unified: 11.0.4
+      unified: 11.0.5
 
   request-light@0.7.0: {}
 
@@ -5774,7 +5745,7 @@ snapshots:
     dependencies:
       '@types/nlcst': 2.0.3
       parse-latin: 7.0.0
-      unified: 11.0.4
+      unified: 11.0.5
 
   retext-smartypants@5.2.0:
     dependencies:
@@ -5799,7 +5770,7 @@ snapshots:
     dependencies:
       '@types/nlcst': 2.0.3
       nlcst-to-string: 4.0.0
-      unified: 11.0.4
+      unified: 11.0.5
 
   retext@8.1.0:
     dependencies:
@@ -5813,7 +5784,7 @@ snapshots:
       '@types/nlcst': 2.0.3
       retext-latin: 4.0.0
       retext-stringify: 4.0.0
-      unified: 11.0.4
+      unified: 11.0.5
 
   reusify@1.0.4: {}
 
@@ -5908,10 +5879,6 @@ snapshots:
       shebang-regex: 3.0.0
 
   shebang-regex@3.0.0: {}
-
-  shiki@1.7.0:
-    dependencies:
-      '@shikijs/core': 1.7.0
 
   shiki@1.9.1:
     dependencies:
@@ -6074,16 +6041,6 @@ snapshots:
       is-plain-obj: 4.1.0
       trough: 2.2.0
       vfile: 5.3.7
-
-  unified@11.0.4:
-    dependencies:
-      '@types/unist': 3.0.2
-      bail: 2.0.2
-      devlop: 1.1.0
-      extend: 3.0.2
-      is-plain-obj: 4.1.0
-      trough: 2.2.0
-      vfile: 6.0.1
 
   unified@11.0.5:
     dependencies:
