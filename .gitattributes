@@ -5,4 +5,4 @@
 *.ico  binary
 *.webp binary
 
-*.mdx linguistic-detectable=false
+*.mdx linguist-detectable=false
