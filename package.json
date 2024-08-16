@@ -27,13 +27,13 @@
     "@astrojs/starlight": "^0.25.5",
     "astro": "^4.14.2",
     "astro-embed": "^0.7.2",
-    "lite-youtube-embed": "^0.3.3",
-    "typescript": "^5.5.4"
+    "lite-youtube-embed": "^0.3.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240815.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.5.4",
     "wrangler": "^3.71.0"
   },
   "engines": {

@@ -29,9 +29,6 @@ importers:
       lite-youtube-embed:
         specifier: ^0.3.3
         version: 0.3.3
-      typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20240815.0
@@ -42,6 +39,9 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
       wrangler:
         specifier: ^3.71.0
         version: 3.71.0(@cloudflare/workers-types@4.20240815.0)
