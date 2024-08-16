@@ -2,7 +2,7 @@ pre-commit:
   piped: true
   commands:
     format:
-      glob: '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,d.ts,md,mdx,yaml,yml}'
+      glob: '*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,d.ts,md,mdx,yaml,yml,json}'
       run: |
         pnpm prettier {staged_files} -w
       stage_fixed: true
