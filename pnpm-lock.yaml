@@ -11,9 +11,6 @@ importers:
       '@astro-community/astro-embed-link-preview':
         specifier: ^0.2.1
         version: 0.2.1
-      '@astrojs/check':
-        specifier: ^0.9.2
-        version: 0.9.2(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
       '@astrojs/cloudflare':
         specifier: ^11.0.4
         version: 11.0.4(astro@4.14.2(@types/node@20.11.30)(rollup@4.13.0)(typescript@5.5.4))
@@ -30,6 +27,9 @@ importers:
         specifier: ^0.3.3
         version: 0.3.3
     devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.2
+        version: 0.9.2(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
       '@cloudflare/workers-types':
         specifier: ^4.20240815.0
         version: 4.20240815.0
@@ -2469,11 +2469,6 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.2:
-    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
     engines: {node: '>=10'}
@@ -2822,9 +2817,6 @@ packages:
   vscode-css-languageservice@6.3.0:
     resolution: {integrity: sha512-nU92imtkgzpCL0xikrIb8WvedV553F2BENzgz23wFuok/HLN5BeQmroMy26pUwFxV2eV8oNRmYCUv8iO7kSMhw==}
 
-  vscode-html-languageservice@5.2.0:
-    resolution: {integrity: sha512-cdNMhyw57/SQzgUUGSIMQ66jikqEN6nBNyhx5YuOyj9310+eY9zw8Q0cXpiKzDX8aHYFewQEXRnigl06j/TVwQ==}
-
   vscode-html-languageservice@5.3.0:
     resolution: {integrity: sha512-C4Z3KsP5Ih+fjHpiBc5jxmvCl+4iEwvXegIrzu2F5pktbWvQaBT3YkVPk8N+QlSSMk8oCG6PKtZ/Sq2YHb5e8g==}
 
@@ -2846,8 +2838,8 @@ packages:
   vscode-languageserver-protocol@3.17.5:
     resolution: {integrity: sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==}
 
-  vscode-languageserver-textdocument@1.0.11:
-    resolution: {integrity: sha512-X+8T3GoiwTVlJbicx/sIAF+yuJAqz8VvwJyoMVhwEMoEKE/fkDmrqUgDMyBECcM2A2frVZIUj5HI/ErRXCfOeA==}
+  vscode-languageserver-textdocument@1.0.12:
+    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
 
   vscode-languageserver-types@3.16.0:
     resolution: {integrity: sha512-k8luDIWJWyenLc5ToFQQMaSrqCHiLwyKPHKPQZ5zz21vM+vIVUSvsRpcbiECH4WR88K2XZqc4ScRcZ7nk/jbeA==}
@@ -3078,7 +3070,7 @@ snapshots:
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.0
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
       '@volar/kit': 2.4.0-alpha.18(typescript@5.5.4)
       '@volar/language-core': 2.4.0-alpha.18
       '@volar/language-server': 2.4.0-alpha.18
@@ -3093,7 +3085,7 @@ snapshots:
       volar-service-typescript: 0.0.59(@volar/language-service@2.4.0-alpha.18)
       volar-service-typescript-twoslash-queries: 0.0.59(@volar/language-service@2.4.0-alpha.18)
       volar-service-yaml: 0.0.59(@volar/language-service@2.4.0-alpha.18)
-      vscode-html-languageservice: 5.2.0
+      vscode-html-languageservice: 5.3.0
       vscode-uri: 3.0.8
     optionalDependencies:
       prettier: 3.3.3
@@ -3949,7 +3941,7 @@ snapshots:
       '@volar/typescript': 2.4.0-alpha.18
       typesafe-path: 0.2.2
       typescript: 5.5.4
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
 
   '@volar/language-core@2.4.0-alpha.18':
@@ -3966,20 +3958,20 @@ snapshots:
       request-light: 0.7.0
       vscode-languageserver: 9.0.1
       vscode-languageserver-protocol: 3.17.5
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
 
   '@volar/language-service@2.4.0-alpha.18':
     dependencies:
       '@volar/language-core': 2.4.0-alpha.18
       vscode-languageserver-protocol: 3.17.5
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
 
   '@volar/snapshot-document@2.4.0-alpha.18':
     dependencies:
       vscode-languageserver-protocol: 3.17.5
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
 
   '@volar/source-map@2.4.0-alpha.18': {}
 
@@ -3993,7 +3985,7 @@ snapshots:
     dependencies:
       emmet: 2.4.7
       jsonc-parser: 2.3.1
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-languageserver-types: 3.17.5
       vscode-uri: 2.1.2
 
@@ -5920,8 +5912,6 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.6.2: {}
-
   semver@7.6.3: {}
 
   sharp@0.33.3:
@@ -6091,7 +6081,7 @@ snapshots:
 
   typescript-auto-import-cache@0.3.3:
     dependencies:
-      semver: 7.6.2
+      semver: 7.6.3
 
   typescript@5.5.4: {}
 
@@ -6217,7 +6207,7 @@ snapshots:
   volar-service-css@0.0.59(@volar/language-service@2.4.0-alpha.18):
     dependencies:
       vscode-css-languageservice: 6.3.0
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.0-alpha.18
@@ -6234,7 +6224,7 @@ snapshots:
   volar-service-html@0.0.59(@volar/language-service@2.4.0-alpha.18):
     dependencies:
       vscode-html-languageservice: 5.3.0
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.0-alpha.18
@@ -6255,9 +6245,9 @@ snapshots:
   volar-service-typescript@0.0.59(@volar/language-service@2.4.0-alpha.18):
     dependencies:
       path-browserify: 1.0.1
-      semver: 7.6.2
+      semver: 7.6.3
       typescript-auto-import-cache: 0.3.3
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-nls: 5.2.0
       vscode-uri: 3.0.8
     optionalDependencies:
@@ -6273,28 +6263,21 @@ snapshots:
   vscode-css-languageservice@6.3.0:
     dependencies:
       '@vscode/l10n': 0.0.18
-      vscode-languageserver-textdocument: 1.0.11
-      vscode-languageserver-types: 3.17.5
-      vscode-uri: 3.0.8
-
-  vscode-html-languageservice@5.2.0:
-    dependencies:
-      '@vscode/l10n': 0.0.18
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-languageserver-types: 3.17.5
       vscode-uri: 3.0.8
 
   vscode-html-languageservice@5.3.0:
     dependencies:
       '@vscode/l10n': 0.0.18
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-languageserver-types: 3.17.5
       vscode-uri: 3.0.8
 
   vscode-json-languageservice@4.1.8:
     dependencies:
       jsonc-parser: 3.3.1
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-languageserver-types: 3.17.5
       vscode-nls: 5.2.0
       vscode-uri: 3.0.8
@@ -6313,7 +6296,7 @@ snapshots:
       vscode-jsonrpc: 8.2.0
       vscode-languageserver-types: 3.17.5
 
-  vscode-languageserver-textdocument@1.0.11: {}
+  vscode-languageserver-textdocument@1.0.12: {}
 
   vscode-languageserver-types@3.16.0: {}
 
@@ -6422,7 +6405,7 @@ snapshots:
       request-light: 0.5.8
       vscode-json-languageservice: 4.1.8
       vscode-languageserver: 7.0.0
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-languageserver-types: 3.17.5
       vscode-nls: 5.2.0
       vscode-uri: 3.0.8
