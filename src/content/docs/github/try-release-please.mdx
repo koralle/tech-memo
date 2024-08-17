@@ -1,0 +1,68 @@
+---
+title: Release Pleaseを使ってみる
+description: Release Pleaseを使ってリリースノートの作成やパッケージの公開作業を自動化する
+---
+
+import { Aside } from '@astrojs/starlight/components'
+import { LinkPreview } from 'astro-embed'
+
+## Release Please
+
+パッケージのリリースに必要な諸々の作業を自動化してくれる超便利なツールの一つ。
+
+<LinkPreview id="https://github.com/googleapis/release-please" />
+
+具体的にはこんな作業を自動化できる。
+
+- `CHANGELOG.md`の生成
+- GitHubへのリリース作業
+- リリースPRの作成
+- （JavaScript/TypeScriptなら）npmへのパッケージ公開
+
+## 仕組み
+
+GitHub Actionsを使用する前提で考える。
+
+<Aside type="tip">
+Release PleaseはGitHub Actionsとの併用を推奨している。
+
+> The easiest way to run Release Please is as a GitHub action.
+
+</Aside>
+
+Release用のPRをマージすると
+
+## Release Pleaseとコミットメッセージの書き方
+
+1. Conventional Commit messagesに従ってコミットメッセージを書く
+2. PRをマージするときはsquash-mergeを使用する
+3. フッターを使って複数の変更を1つのコミットにまとめる
+
+### 1. Conventional Commit messagesに従ってコミットメッセージを書く
+
+Release Pleaseを導入するとき、コミットメッセージはConventional Commit messagesに従う必要がある。
+
+<LinkPreview id="https://www.conventionalcommits.org/ja/v1.0.0/" />
+
+### 2. PRをマージするときはsquash-mergeを使用する
+
+Release Pleaseではsquash-mergeを使用することが強く推奨されている。
+
+### 3. フッターを使って複数の変更を1つのコミットにまとめる
+
+こんな感じでフッターを書くことで、複数の変更を1つのコミットにまとめることができる。
+
+```
+feat: adds v4 UUID to crypto
+
+This adds support for v4 UUIDs to the library.
+
+fix(utils): unicode no longer throws exception
+  PiperOrigin-RevId: 345559154
+  BREAKING-CHANGE: encode method no longer throws.
+  Source-Link: googleapis/googleapis@5e0dcb2
+
+feat(utils): update encode to support unicode
+  PiperOrigin-RevId: 345559182
+  Source-Link: googleapis/googleapis@e5eef86
+```
